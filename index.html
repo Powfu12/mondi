@@ -1,0 +1,2062 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Mondi Car Wash - Professional car detailing services in Zakynthos. Premium quality, expert care.">
+    <meta name="theme-color" content="#c3e321">
+    <title>Mondi Car Wash | Professional Car Detailing Zakynthos</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Montserrat:wght@600;700;800;900&display=swap" rel="stylesheet">
+    
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        :root {
+            --lime: #c3e321;
+            --lime-dark: #a8c41c;
+            --dark: #0a0a0a;
+            --dark-gray: #1a1a1a;
+            --medium-gray: #2a2a2a;
+            --light-gray: #666666;
+            --white: #ffffff;
+            --off-white: #f8f8f8;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+            background: var(--dark);
+            color: var(--white);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
+
+        /* TYPOGRAPHY */
+        h1, h2, h3, h4, h5, h6 {
+            font-family: 'Montserrat', sans-serif;
+            font-weight: 700;
+            letter-spacing: -0.02em;
+        }
+
+        /* LOADING SCREEN */
+        .loader {
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: var(--dark);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            z-index: 10000;
+            transition: opacity 0.5s, visibility 0.5s;
+        }
+
+        .loader.hidden {
+            opacity: 0;
+            visibility: hidden;
+        }
+
+        .loader-content {
+            text-align: center;
+        }
+
+        .loader-logo {
+            width: 400px;
+            height: 400px;
+            
+            margin: 0 auto 30px;
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            
+        }
+
+        .loader-bar {
+            width: 200px;
+            height: 3px;
+            background: var(--dark-gray);
+            border-radius: 3px;
+            overflow: hidden;
+            margin: 0 auto;
+        }
+
+        .loader-progress {
+            width: 0;
+            height: 100%;
+            background: var(--lime);
+            animation: loading 2s ease-in-out forwards;
+        }
+
+        @keyframes loading {
+            to { width: 100%; }
+        }
+
+        /* NAVIGATION */
+        .navbar {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: rgba(10, 10, 10, 0.95);
+            backdrop-filter: blur(20px);
+            z-index: 1000;
+            border-bottom: 1px solid rgba(255, 255, 255, 0.05);
+            transition: all 0.3s ease;
+        }
+
+        .navbar.scrolled {
+            background: rgba(10, 10, 10, 0.98);
+            box-shadow: 0 4px 30px rgba(0, 0, 0, 0.4);
+        }
+
+        .nav-container {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding: 20px 40px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .nav-logo-container {
+            display: flex;
+            align-items: center;
+        }
+
+        .nav-logo {
+            height: 50px;
+            width: auto;
+            object-fit: contain;
+        }
+
+        .nav-logo-placeholder {
+            height: 50px;
+            width: 140px;
+            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            font-size: 0.9rem;
+            color: var(--dark);
+            letter-spacing: 1px;
+        }
+
+        .nav-menu {
+            display: flex;
+            gap: 40px;
+            align-items: center;
+            list-style: none;
+        }
+
+        .nav-link {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            font-size: 0.95rem;
+            transition: color 0.3s;
+            position: relative;
+        }
+
+        .nav-link::after {
+            content: '';
+            position: absolute;
+            bottom: -5px;
+            left: 0;
+            width: 0;
+            height: 2px;
+            background: var(--lime);
+            transition: width 0.3s;
+        }
+
+        .nav-link:hover {
+            color: var(--lime);
+        }
+
+        .nav-link:hover::after {
+            width: 100%;
+        }
+
+        .lang-switch {
+            display: flex;
+            gap: 8px;
+            background: var(--dark-gray);
+            padding: 6px;
+            border-radius: 8px;
+        }
+
+        .lang-btn {
+            background: transparent;
+            border: none;
+            color: var(--light-gray);
+            padding: 8px 16px;
+            border-radius: 6px;
+            cursor: pointer;
+            font-weight: 600;
+            font-size: 0.9rem;
+            transition: all 0.3s;
+        }
+
+        .lang-btn.active {
+            background: var(--lime);
+            color: var(--dark);
+        }
+
+        .mobile-menu-btn {
+            display: none;
+            background: none;
+            border: none;
+            color: var(--white);
+            font-size: 1.5rem;
+            cursor: pointer;
+        }
+
+        /* HERO SECTION */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            position: relative;
+            overflow: hidden;
+            background: linear-gradient(135deg, rgba(10, 10, 10, 0.95) 0%, rgba(26, 26, 26, 0.9) 100%),
+                        url('hero.jpg') center/cover no-repeat;
+            padding: 120px 40px 80px;
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at 20% 50%, rgba(195, 227, 33, 0.1) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            max-width: 900px;
+            text-align: center;
+            position: relative;
+            z-index: 2;
+        }
+
+        .hero-logo-container {
+            margin-bottom: 40px;
+        }
+
+        .hero-logo {
+            max-width: 400px;
+            width: 90%;
+            height: auto;
+            filter: drop-shadow(0 20px 40px rgba(195, 227, 33, 0.3));
+        }
+
+        .hero-logo-placeholder {
+            width: 100%;
+            max-width: 400px;
+            height: 160px;
+            margin: 0 auto;
+            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
+            border-radius: 16px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--dark);
+            letter-spacing: 3px;
+            box-shadow: 0 20px 60px rgba(195, 227, 33, 0.3);
+        }
+
+        .hero-subtitle {
+            display: inline-flex;
+            align-items: center;
+            gap: 10px;
+            color: var(--lime);
+            font-size: 1rem;
+            font-weight: 600;
+            margin-bottom: 30px;
+            padding: 10px 24px;
+            background: rgba(195, 227, 33, 0.1);
+            border: 1px solid rgba(195, 227, 33, 0.2);
+            border-radius: 50px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .hero-title {
+            font-size: clamp(2.5rem, 8vw, 5rem);
+            font-weight: 900;
+            margin-bottom: 30px;
+            line-height: 1.1;
+            letter-spacing: -0.03em;
+        }
+
+        .hero-title .highlight {
+            color: var(--lime);
+        }
+
+        .hero-description {
+            font-size: clamp(1.1rem, 2vw, 1.3rem);
+            color: rgba(255, 255, 255, 0.7);
+            margin-bottom: 50px;
+            line-height: 1.7;
+            max-width: 700px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .hero-cta {
+            display: flex;
+            gap: 20px;
+            justify-content: center;
+            flex-wrap: wrap;
+        }
+
+        .btn {
+            padding: 18px 40px;
+            font-size: 1rem;
+            font-weight: 700;
+            border: none;
+            border-radius: 8px;
+            cursor: pointer;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+            font-family: 'Inter', sans-serif;
+        }
+
+        .btn-primary {
+            background: var(--lime);
+            color: var(--dark);
+        }
+
+        .btn-primary:hover {
+            background: var(--lime-dark);
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(195, 227, 33, 0.4);
+        }
+
+        .btn-secondary {
+            background: transparent;
+            color: var(--white);
+            border: 2px solid rgba(255, 255, 255, 0.2);
+        }
+
+        .btn-secondary:hover {
+            border-color: var(--white);
+            background: rgba(255, 255, 255, 0.05);
+        }
+
+        /* SECTION STYLES */
+        .section {
+            padding: 120px 40px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-header {
+            text-align: center;
+            margin-bottom: 80px;
+        }
+
+        .section-label {
+            display: inline-block;
+            color: var(--lime);
+            font-size: 0.9rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            margin-bottom: 20px;
+        }
+
+        .section-title {
+            font-size: clamp(2.5rem, 6vw, 4rem);
+            font-weight: 900;
+            margin-bottom: 20px;
+            letter-spacing: -0.02em;
+        }
+
+        .section-description {
+            font-size: 1.2rem;
+            color: rgba(255, 255, 255, 0.6);
+            max-width: 700px;
+            margin: 0 auto;
+            line-height: 1.8;
+        }
+
+        /* SERVICES GRID */
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+            gap: 30px;
+        }
+
+        .service-card {
+            background: var(--dark-gray);
+            border: 1px solid rgba(255, 255, 255, 0.05);
+            border-radius: 16px;
+            padding: 50px 40px;
+            transition: all 0.4s;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .service-card::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 4px;
+            background: linear-gradient(90deg, var(--lime), var(--lime-dark));
+            transform: scaleX(0);
+            transition: transform 0.4s;
+        }
+
+        .service-card:hover {
+            transform: translateY(-10px);
+            border-color: rgba(195, 227, 33, 0.3);
+            background: var(--medium-gray);
+        }
+
+        .service-card:hover::before {
+            transform: scaleX(1);
+        }
+
+        .service-icon {
+            width: 70px;
+            height: 70px;
+            background: rgba(195, 227, 33, 0.1);
+            border-radius: 12px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-bottom: 30px;
+            transition: all 0.4s;
+        }
+
+        .service-icon i {
+            font-size: 2rem;
+            color: var(--lime);
+        }
+
+        .service-card:hover .service-icon {
+            background: var(--lime);
+            transform: scale(1.1);
+        }
+
+        .service-card:hover .service-icon i {
+            color: var(--dark);
+        }
+
+        .service-title {
+            font-size: 1.6rem;
+            font-weight: 800;
+            margin-bottom: 15px;
+            color: var(--white);
+        }
+
+        .service-description {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            line-height: 1.7;
+            margin-bottom: 30px;
+        }
+
+        .service-price {
+            font-size: 2.5rem;
+            font-weight: 900;
+            color: var(--lime);
+            margin-bottom: 10px;
+        }
+
+        .service-price-label {
+            font-size: 0.9rem;
+            color: rgba(255, 255, 255, 0.5);
+            font-weight: 500;
+        }
+
+        .service-features {
+            list-style: none;
+            margin-top: 25px;
+            padding-top: 25px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+        }
+
+        .service-features li {
+            padding: 10px 0;
+            color: rgba(255, 255, 255, 0.7);
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 0.95rem;
+        }
+
+        .service-features li i {
+            color: var(--lime);
+            font-size: 0.8rem;
+        }
+
+        /* FEATURES SECTION */
+        .features-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 40px;
+            margin-top: 60px;
+        }
+
+        .feature-item {
+            text-align: center;
+        }
+
+        .feature-icon {
+            width: 80px;
+            height: 80px;
+            background: rgba(195, 227, 33, 0.1);
+            border: 2px solid rgba(195, 227, 33, 0.2);
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin: 0 auto 25px;
+            transition: all 0.4s;
+        }
+
+        .feature-icon i {
+            font-size: 2rem;
+            color: var(--lime);
+        }
+
+        .feature-item:hover .feature-icon {
+            background: var(--lime);
+            transform: scale(1.1) rotate(5deg);
+        }
+
+        .feature-item:hover .feature-icon i {
+            color: var(--dark);
+        }
+
+        .feature-title {
+            font-size: 1.3rem;
+            font-weight: 700;
+            margin-bottom: 12px;
+        }
+
+        .feature-text {
+            color: rgba(255, 255, 255, 0.6);
+            font-size: 1rem;
+            line-height: 1.6;
+        }
+
+        /* GALLERY */
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            aspect-ratio: 16/10;
+            border-radius: 12px;
+            overflow: hidden;
+            cursor: pointer;
+            transition: all 0.4s;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.6s;
+        }
+
+        .gallery-item:hover {
+            transform: translateY(-5px);
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.1);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            padding: 25px;
+            background: linear-gradient(to top, rgba(10, 10, 10, 0.9), transparent);
+            transform: translateY(100%);
+            transition: transform 0.4s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
+        }
+
+        .gallery-title {
+            color: var(--white);
+            font-weight: 700;
+            font-size: 1.1rem;
+        }
+
+        /* CTA SECTION */
+        .cta-section {
+            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
+            border-radius: 24px;
+            padding: 80px 60px;
+            text-align: center;
+            position: relative;
+            overflow: hidden;
+        }
+
+        .cta-section::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: url('data:image/svg+xml,<svg width="100" height="100" xmlns="http://www.w3.org/2000/svg"><circle cx="50" cy="50" r="2" fill="rgba(0,0,0,0.05)"/></svg>') repeat;
+            opacity: 0.3;
+        }
+
+        .cta-content {
+            position: relative;
+            z-index: 1;
+        }
+
+        .cta-title {
+            font-size: clamp(2rem, 5vw, 3.5rem);
+            font-weight: 900;
+            color: var(--dark);
+            margin-bottom: 20px;
+        }
+
+        .cta-text {
+            font-size: 1.2rem;
+            color: rgba(10, 10, 10, 0.8);
+            margin-bottom: 40px;
+            max-width: 600px;
+            margin-left: auto;
+            margin-right: auto;
+        }
+
+        .btn-cta {
+            background: var(--dark);
+            color: var(--white);
+            padding: 20px 50px;
+            font-size: 1.1rem;
+            font-weight: 700;
+            border-radius: 8px;
+            text-decoration: none;
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            transition: all 0.3s;
+        }
+
+        .btn-cta:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 15px 40px rgba(10, 10, 10, 0.3);
+        }
+
+        /* FOOTER */
+        .footer {
+            background: var(--dark-gray);
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            padding: 80px 40px 40px;
+        }
+
+        .footer-content {
+            max-width: 1400px;
+            margin: 0 auto;
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 60px;
+            margin-bottom: 60px;
+        }
+
+        .footer-brand {
+            max-width: 300px;
+        }
+
+        .footer-logo {
+            height: 60px;
+            width: auto;
+            margin-bottom: 25px;
+        }
+
+        .footer-logo-placeholder {
+            width: 160px;
+            height: 60px;
+            background: linear-gradient(135deg, var(--lime), var(--lime-dark));
+            border-radius: 10px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-weight: 900;
+            color: var(--dark);
+            font-size: 1rem;
+            letter-spacing: 1px;
+            margin-bottom: 25px;
+        }
+
+        .footer-text {
+            color: rgba(255, 255, 255, 0.6);
+            line-height: 1.7;
+            margin-bottom: 25px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+        }
+
+        .social-link {
+            width: 45px;
+            height: 45px;
+            background: var(--medium-gray);
+            border-radius: 8px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            color: var(--white);
+            text-decoration: none;
+            transition: all 0.3s;
+        }
+
+        .social-link:hover {
+            background: var(--lime);
+            color: var(--dark);
+            transform: translateY(-3px);
+        }
+
+        .footer-links h4 {
+            font-size: 1.1rem;
+            font-weight: 700;
+            margin-bottom: 25px;
+            color: var(--white);
+        }
+
+        .footer-links ul {
+            list-style: none;
+        }
+
+        .footer-links ul li {
+            margin-bottom: 15px;
+        }
+
+        .footer-links ul li a {
+            color: rgba(255, 255, 255, 0.6);
+            text-decoration: none;
+            transition: color 0.3s;
+            font-size: 0.95rem;
+        }
+
+        .footer-links ul li a:hover {
+            color: var(--lime);
+        }
+
+        .footer-bottom {
+            max-width: 1400px;
+            margin: 0 auto;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.05);
+            text-align: center;
+            color: rgba(255, 255, 255, 0.5);
+            font-size: 0.9rem;
+        }
+
+        /* FLOATING BUTTONS */
+        .floating-btns {
+            position: fixed;
+            bottom: 30px;
+            right: 30px;
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            z-index: 999;
+        }
+
+        .float-btn {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
+            text-decoration: none;
+            transition: all 0.3s;
+            box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+        }
+
+        .float-whatsapp {
+            background: #25D366;
+            color: var(--white);
+        }
+
+        .float-top {
+            background: var(--lime);
+            color: var(--dark);
+            opacity: 0;
+            visibility: hidden;
+            cursor: pointer;
+            border: none;
+        }
+
+        .float-top.visible {
+            opacity: 1;
+            visibility: visible;
+        }
+
+        .float-btn:hover {
+            transform: translateY(-5px) scale(1.05);
+        }
+
+        /* RESPONSIVE */
+        @media (max-width: 968px) {
+            .nav-menu {
+                position: fixed;
+                top: 80px;
+                left: -100%;
+                width: 100%;
+                height: calc(100vh - 80px);
+                background: rgba(10, 10, 10, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 40px;
+                transition: left 0.3s;
+                border-top: 1px solid rgba(255, 255, 255, 0.05);
+            }
+
+            .nav-menu.active {
+                left: 0;
+            }
+
+            .mobile-menu-btn {
+                display: block;
+            }
+
+            .section {
+                padding: 80px 25px;
+            }
+
+            .hero {
+                padding: 100px 25px 60px;
+            }
+
+            .nav-container {
+                padding: 20px 25px;
+            }
+
+            .cta-section {
+                padding: 60px 30px;
+            }
+
+            .floating-btns {
+                bottom: 20px;
+                right: 20px;
+            }
+
+            .float-btn {
+                width: 55px;
+                height: 55px;
+                font-size: 1.3rem;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero-cta {
+                flex-direction: column;
+            }
+
+            .btn {
+                width: 100%;
+                justify-content: center;
+            }
+
+            .services-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .footer-content {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+        }
+    </style>
+</head>
+<body>
+    <!-- LOADER -->
+    <div class="loader">
+        <div class="loader-content">
+              <img src="3dmondi.gif" alt="Mondi Car Wash" class="loader-logo">
+            <div class="loader-bar">
+                <div class="loader-progress"></div>
+            </div>
+        </div>
+    </div>
+
+    <!-- NAVIGATION -->
+    <nav class="navbar">
+        <div class="nav-container">
+            <img src="mondi_logo_1500_smooth.png" alt="Mondi Car Wash" class="nav-logo">
+            
+            <ul class="nav-menu">
+                <li><a href="#services" class="nav-link" data-translate="navServices">Services</a></li>
+                <li><a href="#gallery" class="nav-link" data-translate="navGallery">Gallery</a></li>
+                <li><a href="#contact" class="nav-link" data-translate="navContact">Contact</a></li>
+                <li>
+                    <div class="lang-switch">
+                        <button class="lang-btn active" data-lang="en">EN</button>
+                        <button class="lang-btn" data-lang="gr">ΕΛ</button>
+                    </div>
+                </li>
+            </ul>
+
+            <button class="mobile-menu-btn">
+                <i class="fas fa-bars"></i>
+            </button>
+        </div>
+    </nav>
+
+    <!-- HERO SECTION -->
+    <section class="hero">
+        <div class="hero-content">
+            <div class="hero-logo-container">
+                <!-- <img src="your-logo-large.png" alt="Mondi Car Wash" class="hero-logo"> -->
+               <img src="3dmondi.gif" alt="Mondi Car Wash" class="hero-logo">
+            </div>
+            
+            <div class="hero-subtitle">
+                <i class="fas fa-map-marker-alt"></i>
+                <span data-translate="location">Zakynthos, Greece</span>
+            </div>
+            
+            <h1 class="hero-title">
+                <span data-translate="heroTitle1">More Than</span> <span class="highlight" data-translate="heroTitle2"> Detailing</span>
+            </h1>
+            
+            <p class="hero-description" data-translate="heroDesc">
+                Experience premium car wash and detailing services with meticulous attention to detail. We restore your vehicle's showroom shine.
+            </p>
+            
+            <div class="hero-cta">
+                <a href="#contact" class="btn btn-primary">
+                    <i class="fas fa-calendar-check"></i>
+                    <span data-translate="bookNow">Book Appointment</span>
+                </a>
+                <a href="#services" class="btn btn-secondary">
+                    <i class="fas fa-th-large"></i>
+                    <span data-translate="viewServices">View Services</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- SERVICES SECTION -->
+    <section class="section" id="services">
+        <div class="section-header">
+            <div class="section-label" data-translate="servicesLabel">OUR SERVICES</div>
+            <h2 class="section-title" data-translate="servicesTitle">Premium Car Care Packages</h2>
+            <p class="section-description" data-translate="servicesDesc">
+                Choose from our range of professional detailing services designed to keep your vehicle in pristine condition.
+            </p>
+        </div>
+
+        <div class="services-grid">
+            <!-- Service 1 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-spray-can"></i>
+                </div>
+                <h3 class="service-title" data-translate="service1Title">Exterior Wash</h3>
+                <p class="service-description" data-translate="service1Desc">
+                    Complete exterior cleaning with premium shampoo, wheel cleaning, tire dressing, and hand drying.
+                </p>
+                <div class="service-price">€20</div>
+                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature1">Hand wash & dry</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature2">Wheel & tire cleaning</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature3">Window cleaning</span></li>
+                </ul>
+            </div>
+
+            <!-- Service 2 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-star"></i>
+                </div>
+                <h3 class="service-title" data-translate="service2Title">Premium Detail</h3>
+                <p class="service-description" data-translate="service2Desc">
+                    Full exterior and interior detailing including wax protection, interior vacuum, and surface treatment.
+                </p>
+                <div class="service-price">€45</div>
+                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature4">Everything in Exterior</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature5">Interior deep clean</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature6">Wax protection</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature7">Dashboard treatment</span></li>
+                </ul>
+            </div>
+
+            <!-- Service 3 -->
+            <div class="service-card">
+                <div class="service-icon">
+                    <i class="fas fa-gem"></i>
+                </div>
+                <h3 class="service-title" data-translate="service3Title">Complete Detailing</h3>
+                <p class="service-description" data-translate="service3Desc">
+                    Ultimate detailing experience with paint correction, ceramic coating, and comprehensive interior restoration.
+                </p>
+                <div class="service-price">€120</div>
+                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
+                <ul class="service-features">
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature8">Full Premium service</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature9">Paint correction</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature10">Ceramic coating</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature11">Engine bay cleaning</span></li>
+                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature12">Headlight restoration</span></li>
+                </ul>
+            </div>
+        </div>
+    </section>
+
+    <!-- FEATURES SECTION -->
+    <section class="section" style="background: var(--dark-gray);">
+        <div class="section-header">
+            <div class="section-label" data-translate="whyLabel">WHY CHOOSE US</div>
+            <h2 class="section-title" data-translate="whyTitle">Excellence in Every Detail</h2>
+            <p class="section-description" data-translate="whyDesc">
+                We combine professional expertise with premium products to deliver outstanding results every time.
+            </p>
+        </div>
+
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-award"></i>
+                </div>
+                <h3 class="feature-title" data-translate="featureTitle1">Expert Team</h3>
+                <p class="feature-text" data-translate="featureText1">
+                    Highly trained professionals with years of detailing experience
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-shield-alt"></i>
+                </div>
+                <h3 class="feature-title" data-translate="featureTitle2">Quality Products</h3>
+                <p class="feature-text" data-translate="featureText2">
+                    Premium cleaning products that are safe for your vehicle
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-leaf"></i>
+                </div>
+                <h3 class="feature-title" data-translate="featureTitle3">Eco-Friendly</h3>
+                <p class="feature-text" data-translate="featureText3">
+                    Environmentally responsible cleaning solutions
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="feature-title" data-translate="featureTitle4">Efficient Service</h3>
+                <p class="feature-text" data-translate="featureText4">
+                    Quick turnaround without compromising on quality
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- GALLERY SECTION -->
+    <section class="section" id="gallery">
+        <div class="section-header">
+            <div class="section-label" data-translate="galleryLabel">OUR WORK</div>
+            <h2 class="section-title" data-translate="galleryTitle">Results That Speak</h2>
+            <p class="section-description" data-translate="galleryDesc">
+                See the transformation we deliver with our professional detailing services.
+            </p>
+        </div>
+
+        <div class="gallery-grid">
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1520340356584-f9917d1eea6f?w=800&q=80" alt="Car detailing work 1" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem1">Exterior Detailing</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1607860108855-64acf2078ed9?w=800&q=80" alt="Car detailing work 2" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem2">Interior Care</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=800&q=80" alt="Car detailing work 3" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem3">Paint Protection</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1558618666-fcd25c85cd64?w=800&q=80" alt="Car detailing work 4" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem4">Premium Finish</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1601362840469-51e4d8d58785?w=800&q=80" alt="Car detailing work 5" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem5">Ceramic Coating</div>
+                </div>
+            </div>
+
+            <div class="gallery-item">
+                <img src="https://images.unsplash.com/photo-1492144534655-ae79c964c9d7?w=800&q=80" alt="Car detailing work 6" loading="lazy">
+                <div class="gallery-overlay">
+                    <div class="gallery-title" data-translate="galleryItem6">Showroom Shine</div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- CTA SECTION -->
+    <section class="section" id="contact">
+        <div class="cta-section">
+            <div class="cta-content">
+                <h2 class="cta-title" data-translate="ctaTitle">Ready to Transform Your Vehicle?</h2>
+                <p class="cta-text" data-translate="ctaText">
+                    Book your appointment today and experience professional car detailing at its finest.
+                </p>
+                <a href="https://instagram.com/mondicarwash" target="_blank" class="btn-cta">
+                    <i class="fab fa-instagram"></i>
+                    <span data-translate="ctaButton">Book via Instagram</span>
+                </a>
+            </div>
+        </div>
+    </section>
+
+    <!-- CONTACT INFO -->
+    <section class="section" style="padding-top: 0;">
+        <div class="features-grid">
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-map-marker-alt"></i>
+                </div>
+                <h3 class="feature-title" data-translate="contactLocation">Location</h3>
+                <p class="feature-text" data-translate="contactLocationText">
+                    Zakynthos Island<br>Greece
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-phone"></i>
+                </div>
+                <h3 class="feature-title" data-translate="contactPhone">Phone</h3>
+                <p class="feature-text">
+                    <a href="tel:+306900000000" style="color: var(--lime); text-decoration: none;">+30 690 000 0000</a>
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fas fa-clock"></i>
+                </div>
+                <h3 class="feature-title" data-translate="contactHours">Working Hours</h3>
+                <p class="feature-text" data-translate="contactHoursText">
+                    Mon-Fri: 08:00 - 20:00<br>
+                    Sat: 09:00 - 18:00
+                </p>
+            </div>
+
+            <div class="feature-item">
+                <div class="feature-icon">
+                    <i class="fab fa-instagram"></i>
+                </div>
+                <h3 class="feature-title" data-translate="contactSocial">Follow Us</h3>
+                <p class="feature-text">
+                    <a href="https://instagram.com/mondicarwash" target="_blank" style="color: var(--lime); text-decoration: none;">@mondicarwash</a>
+                </p>
+            </div>
+        </div>
+    </section>
+
+    <!-- FOOTER -->
+    <footer class="footer">
+        <div class="footer-content">
+            <div class="footer-brand">
+                <!-- <img src="your-logo.png" alt="Mondi Car Wash" class="footer-logo"> -->
+                 <img src="mondi_logo_1500_smooth.png" alt="Mondi Car Wash" class="footer-logo">
+                <p class="footer-text" data-translate="footerText">
+                    Professional car detailing services in Zakynthos. We treat every vehicle with care and precision.
+                </p>
+                <div class="social-links">
+                    <a href="https://instagram.com/mondicarwash" target="_blank" class="social-link" aria-label="Instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
+                    <a href="https://facebook.com/mondicarwash" target="_blank" class="social-link" aria-label="Facebook">
+                        <i class="fab fa-facebook-f"></i>
+                    </a>
+                    <a href="https://wa.me/306900000000" target="_blank" class="social-link" aria-label="WhatsApp">
+                        <i class="fab fa-whatsapp"></i>
+                    </a>
+                </div>
+            </div>
+
+            <div class="footer-links">
+                <h4 data-translate="footerServices">Services</h4>
+                <ul>
+                    <li><a href="#services" data-translate="footerService1">Exterior Wash</a></li>
+                    <li><a href="#services" data-translate="footerService2">Premium Detail</a></li>
+                    <li><a href="#services" data-translate="footerService3">Complete Detailing</a></li>
+                    <li><a href="#services" data-translate="footerService4">Ceramic Coating</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4 data-translate="footerCompany">Company</h4>
+                <ul>
+                    <li><a href="#services" data-translate="footerAbout">About Us</a></li>
+                    <li><a href="#gallery" data-translate="footerGallery">Gallery</a></li>
+                    <li><a href="#contact" data-translate="footerContact">Contact</a></li>
+                    <li><a href="#" data-translate="footerPrivacy">Privacy Policy</a></li>
+                </ul>
+            </div>
+
+            <div class="footer-links">
+                <h4 data-translate="footerContactTitle">Contact Info</h4>
+                <ul>
+                    <li data-translate="footerAddress">Zakynthos, Greece</li>
+                    <li><a href="tel:+306900000000">+30 690 000 0000</a></li>
+                    <li><a href="mailto:info@mondicarwash.gr">info@mondicarwash.gr</a></li>
+                    <li data-translate="footerHours">Mon-Sat: 08:00 - 20:00</li>
+                </ul>
+            </div>
+        </div>
+
+        <div class="footer-bottom">
+            <p>© 2024 Mondi Car Wash. <span data-translate="footerRights">All rights reserved.</span></p>
+        </div>
+    </footer>
+
+    <!-- FLOATING BUTTONS -->
+    <div class="floating-btns">
+        <a href="https://wa.me/306900000000" target="_blank" class="float-btn float-whatsapp" aria-label="WhatsApp">
+            <i class="fab fa-whatsapp"></i>
+        </a>
+        <button class="float-btn float-top" aria-label="Back to top">
+            <i class="fas fa-arrow-up"></i>
+        </button>
+    </div>
+
+    <script>
+        // TRANSLATIONS
+        const translations = {
+            en: {
+                navServices: "Services",
+                navGallery: "Gallery",
+                navContact: "Contact",
+                location: "Zakynthos, Greece",
+                heroTitle1: "Not Just",
+                heroTitle2: "Perfect",
+                heroDesc: "Premium car detailing, beyond a simple wash.",
+                bookNow: "Book Appointment",
+                viewServices: "View Services",
+                servicesLabel: "OUR SERVICES",
+                servicesTitle: "Premium Car Care Packages",
+                servicesDesc: "Choose from our range of professional detailing services designed to keep your vehicle in pristine condition.",
+                service1Title: "Exterior Wash",
+                service1Desc: "Complete exterior cleaning with premium shampoo, wheel cleaning, tire dressing, and hand drying.",
+                service2Title: "Premium Detail",
+                service2Desc: "Full exterior and interior detailing including wax protection, interior vacuum, and surface treatment.",
+                service3Title: "Complete Detailing",
+                service3Desc: "Ultimate detailing experience with paint correction, ceramic coating, and comprehensive interior restoration.",
+                startingFrom: "Starting from",
+                feature1: "Hand wash & dry",
+                feature2: "Wheel & tire cleaning",
+                feature3: "Window cleaning",
+                feature4: "Everything in Exterior",
+                feature5: "Interior deep clean",
+                feature6: "Wax protection",
+                feature7: "Dashboard treatment",
+                feature8: "Full Premium service",
+                feature9: "Paint correction",
+                feature10: "Ceramic coating",
+                feature11: "Engine bay cleaning",
+                feature12: "Headlight restoration",
+                whyLabel: "WHY CHOOSE US",
+                whyTitle: "Excellence in Every Detail",
+                whyDesc: "We combine professional expertise with premium products to deliver outstanding results every time.",
+                featureTitle1: "Expert Team",
+                featureText1: "Highly trained professionals with years of detailing experience",
+                featureTitle2: "Quality Products",
+                featureText2: "Premium cleaning products that are safe for your vehicle",
+                featureTitle3: "Eco-Friendly",
+                featureText3: "Environmentally responsible cleaning solutions",
+                featureTitle4: "Efficient Service",
+                featureText4: "Quick turnaround without compromising on quality",
+                galleryLabel: "OUR WORK",
+                galleryTitle: "Results That Speak",
+                galleryDesc: "See the transformation we deliver with our professional detailing services.",
+                galleryItem1: "Exterior Detailing",
+                galleryItem2: "Interior Care",
+                galleryItem3: "Paint Protection",
+                galleryItem4: "Premium Finish",
+                galleryItem5: "Ceramic Coating",
+                galleryItem6: "Showroom Shine",
+                ctaTitle: "Ready to Transform Your Vehicle?",
+                ctaText: "Book your appointment today and experience professional car detailing at its finest.",
+                ctaButton: "Book via Instagram",
+                contactLocation: "Location",
+                contactLocationText: "Zakynthos Island<br>Greece",
+                contactPhone: "Phone",
+                contactHours: "Working Hours",
+                contactHoursText: "Mon-Fri: 08:00 - 20:00<br>Sat: 09:00 - 18:00",
+                contactSocial: "Follow Us",
+                footerText: "Professional car detailing services in Zakynthos. We treat every vehicle with care and precision.",
+                footerServices: "Services",
+                footerService1: "Exterior Wash",
+                footerService2: "Premium Detail",
+                footerService3: "Complete Detailing",
+                footerService4: "Ceramic Coating",
+                footerCompany: "Company",
+                footerAbout: "About Us",
+                footerGallery: "Gallery",
+                footerContact: "Contact",
+                footerPrivacy: "Privacy Policy",
+                footerContactTitle: "Contact Info",
+                footerAddress: "Zakynthos, Greece",
+                footerHours: "Mon-Sat: 08:00 - 20:00",
+                footerRights: "All rights reserved."
+            },
+            gr: {
+                navServices: "Υπηρεσίες",
+                navGallery: "Γκαλερί",
+                navContact: "Επικοινωνία",
+                location: "Ζάκυνθος, Ελλάδα",
+               heroTitle1: "Not Just",
+                heroTitle2: "Perfect",
+                heroDesc: "Premium περιποίηση αυτοκινήτου, πολύ περισσότερο από ένα απλό πλύσιμο.",
+                bookNow: "Κλείστε Ραντεβού",
+                viewServices: "Δείτε Υπηρεσίες",
+                servicesLabel: "ΟΙ ΥΠΗΡΕΣΙΕΣ ΜΑΣ",
+                servicesTitle: "Πακέτα Premium Φροντίδας",
+                servicesDesc: "Επιλέξτε από τη γκάμα επαγγελματικών υπηρεσιών detailing που διατηρούν το όχημά σας σε άριστη κατάσταση.",
+                service1Title: "Εξωτερικό Πλύσιμο",
+                service1Desc: "Πλήρης εξωτερικός καθαρισμός με premium σαμπουάν, καθαρισμός ζαντών, γυάλισμα λάστιχων και στέγνωμα χειρός.",
+                service2Title: "Premium Detailing",
+                service2Desc: "Πλήρης εξωτερικός και εσωτερικός καθαρισμός με κερί προστασίας, ηλεκτρική σκούπα και περιποίηση επιφανειών.",
+                service3Title: "Πλήρες Detailing",
+                service3Desc: "Η απόλυτη εμπειρία detailing με διόρθωση βαφής, κεραμική επίστρωση και ολοκληρωμένη αποκατάσταση εσωτερικού.",
+                startingFrom: "Ξεκινώντας από",
+                feature1: "Πλύσιμο & στέγνωμα χειρός",
+                feature2: "Καθαρισμός ζαντών & λάστιχων",
+                feature3: "Καθαρισμός τζαμιών",
+                feature4: "Όλα από το Εξωτερικό",
+                feature5: "Βαθύς καθαρισμός εσωτερικού",
+                feature6: "Προστασία κεριού",
+                feature7: "Περιποίηση ταμπλό",
+                feature8: "Πλήρης Premium υπηρεσία",
+                feature9: "Διόρθωση βαφής",
+                feature10: "Κεραμική επίστρωση",
+                feature11: "Καθαρισμός μηχανής",
+                feature12: "Αποκατάσταση φαναριών",
+                whyLabel: "ΓΙΑΤΙ ΝΑ ΜΑΣ ΕΠΙΛΕΞΕΤΕ",
+                whyTitle: "Αριστεία σε Κάθε Λεπτομέρεια",
+                whyDesc: "Συνδυάζουμε επαγγελματική εμπειρία με premium προϊόντα για να προσφέρουμε εξαιρετικά αποτελέσματα κάθε φορά.",
+                featureTitle1: "Έμπειρη Ομάδα",
+                featureText1: "Άρτια εκπαιδευμένοι επαγγελματίες με χρόνια εμπειρίας στο detailing",
+                featureTitle2: "Ποιοτικά Προϊόντα",
+                featureText2: "Premium προϊόντα καθαρισμού ασφαλή για το όχημά σας",
+                featureTitle3: "Οικολογικά",
+                featureText3: "Περιβαλλοντικά υπεύθυνα προϊόντα καθαρισμού",
+                featureTitle4: "Γρήγορη Εξυπηρέτηση",
+                featureText4: "Ταχεία ολοκλήρωση χωρίς συμβιβασμούς στην ποιότητα",
+                galleryLabel: "Η ΔΟΥΛΕΙΑ ΜΑΣ",
+                galleryTitle: "Αποτελέσματα που Μιλούν",
+                galleryDesc: "Δείτε τη μεταμόρφωση που προσφέρουμε με τις επαγγελματικές υπηρεσίες detailing.",
+                galleryItem1: "Εξωτερικό Detailing",
+                galleryItem2: "Φροντίδα Εσωτερικού",
+                galleryItem3: "Προστασία Βαφής",
+                galleryItem4: "Premium Φινίρισμα",
+                galleryItem5: "Κεραμική Επίστρωση",
+                galleryItem6: "Λάμψη Showroom",
+                ctaTitle: "Έτοιμοι να Μεταμορφώσετε το Όχημά σας;",
+                ctaText: "Κλείστε το ραντεβού σας σήμερα και βιώστε επαγγελματικό detailing στα καλύτερά του.",
+                ctaButton: "Κλείστε μέσω Instagram",
+                contactLocation: "Τοποθεσία",
+                contactLocationText: "Νησί Ζάκυνθος<br>Ελλάδα",
+                contactPhone: "Τηλέφωνο",
+                contactHours: "Ωράριο",
+                contactHoursText: "Δευ-Παρ: 08:00 - 20:00<br>Σάβ: 09:00 - 18:00",
+                contactSocial: "Ακολουθήστε μας",
+                footerText: "Επαγγελματικές υπηρεσίες detailing στη Ζάκυνθο. Φροντίζουμε κάθε όχημα με προσοχή και ακρίβεια.",
+                footerServices: "Υπηρεσίες",
+                footerService1: "Εξωτερικό Πλύσιμο",
+                footerService2: "Premium Detail",
+                footerService3: "Πλήρες Detailing",
+                footerService4: "Κεραμική Επίστρωση",
+                footerCompany: "Εταιρεία",
+                footerAbout: "Σχετικά",
+                footerGallery: "Γκαλερί",
+                footerContact: "Επικοινωνία",
+                footerPrivacy: "Πολιτική Απορρήτου",
+                footerContactTitle: "Στοιχεία Επικοινωνίας",
+                footerAddress: "Ζάκυνθος, Ελλάδα",
+                footerHours: "Δευ-Σάβ: 08:00 - 20:00",
+                footerRights: "Όλα τα δικαιώματα διατηρούνται."
+            }
+        };
+
+        // LANGUAGE SWITCHER
+        let currentLang = 'en';
+        
+        function translatePage(lang) {
+            currentLang = lang;
+            document.querySelectorAll('[data-translate]').forEach(element => {
+                const key = element.getAttribute('data-translate');
+                if (translations[lang][key]) {
+                    if (element.innerHTML.includes('<br>')) {
+                        element.innerHTML = translations[lang][key];
+                    } else {
+                        element.textContent = translations[lang][key];
+                    }
+                }
+            });
+            
+            document.querySelectorAll('.lang-btn').forEach(btn => {
+                btn.classList.remove('active');
+                if (btn.getAttribute('data-lang') === lang) {
+                    btn.classList.add('active');
+                }
+            });
+            
+            localStorage.setItem('preferredLanguage', lang);
+        }
+        
+        document.querySelectorAll('.lang-btn').forEach(btn => {
+            btn.addEventListener('click', () => {
+                translatePage(btn.getAttribute('data-lang'));
+            });
+        });
+        
+        // Load saved language
+        const savedLang = localStorage.getItem('preferredLanguage');
+        if (savedLang) {
+            translatePage(savedLang);
+        }
+
+        // LOADER
+        window.addEventListener('load', () => {
+            setTimeout(() => {
+                document.querySelector('.loader').classList.add('hidden');
+            }, 2000);
+        });
+
+        // NAVBAR SCROLL EFFECT
+        let lastScroll = 0;
+        window.addEventListener('scroll', () => {
+            const navbar = document.querySelector('.navbar');
+            const currentScroll = window.pageYOffset;
+            
+            if (currentScroll > 100) {
+                navbar.classList.add('scrolled');
+            } else {
+                navbar.classList.remove('scrolled');
+            }
+            
+            lastScroll = currentScroll;
+        });
+
+        // MOBILE MENU
+        const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
+        const navMenu = document.querySelector('.nav-menu');
+        
+        mobileMenuBtn.addEventListener('click', () => {
+            navMenu.classList.toggle('active');
+            const icon = mobileMenuBtn.querySelector('i');
+            icon.classList.toggle('fa-bars');
+            icon.classList.toggle('fa-times');
+        });
+
+        // Close mobile menu on link click
+        document.querySelectorAll('.nav-link').forEach(link => {
+            link.addEventListener('click', () => {
+                navMenu.classList.remove('active');
+                const icon = mobileMenuBtn.querySelector('i');
+                icon.classList.add('fa-bars');
+                icon.classList.remove('fa-times');
+            });
+        });
+
+        // SMOOTH SCROLL
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function(e) {
+                const href = this.getAttribute('href');
+                if (href !== '#' && href.length > 1) {
+                    e.preventDefault();
+                    const target = document.querySelector(href);
+                    if (target) {
+                        const offsetTop = target.offsetTop - 80;
+                        window.scrollTo({
+                            top: offsetTop,
+                            behavior: 'smooth'
+                        });
+                    }
+                }
+            });
+        });
+
+        // BACK TO TOP BUTTON
+        const backToTopBtn = document.querySelector('.float-top');
+        
+        window.addEventListener('scroll', () => {
+            if (window.pageYOffset > 500) {
+                backToTopBtn.classList.add('visible');
+            } else {
+                backToTopBtn.classList.remove('visible');
+            }
+        });
+        
+        backToTopBtn.addEventListener('click', () => {
+            window.scrollTo({
+                top: 0,
+                behavior: 'smooth'
+            });
+        });
+
+        // GALLERY LIGHTBOX
+        document.querySelectorAll('.gallery-item').forEach(item => {
+            item.addEventListener('click', function() {
+                const img = this.querySelector('img');
+                const lightbox = document.createElement('div');
+                lightbox.style.cssText = `
+                    position: fixed;
+                    top: 0;
+                    left: 0;
+                    width: 100%;
+                    height: 100%;
+                    background: rgba(0, 0, 0, 0.95);
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    z-index: 10000;
+                    cursor: pointer;
+                    animation: fadeIn 0.3s ease;
+                    padding: 20px;
+                `;
+                
+                const lightboxImg = document.createElement('img');
+                lightboxImg.src = img.src;
+                lightboxImg.style.cssText = `
+                    max-width: 95%;
+                    max-height: 95%;
+                    object-fit: contain;
+                    border-radius: 8px;
+                    box-shadow: 0 20px 60px rgba(0, 0, 0, 0.5);
+                `;
+                
+                const closeBtn = document.createElement('div');
+                closeBtn.innerHTML = '<i class="fas fa-times"></i>';
+                closeBtn.style.cssText = `
+                    position: absolute;
+                    top: 30px;
+                    right: 30px;
+                    font-size: 2rem;
+                    color: var(--white);
+                    cursor: pointer;
+                    z-index: 10001;
+                    width: 50px;
+                    height: 50px;
+                    display: flex;
+                    align-items: center;
+                    justify-content: center;
+                    background: rgba(255, 255, 255, 0.1);
+                    border-radius: 50%;
+                    transition: all 0.3s;
+                `;
+                
+                closeBtn.addEventListener('mouseenter', function() {
+                    this.style.background = 'var(--lime)';
+                    this.style.color = 'var(--dark)';
+                });
+                
+                closeBtn.addEventListener('mouseleave', function() {
+                    this.style.background = 'rgba(255, 255, 255, 0.1)';
+                    this.style.color = 'var(--white)';
+                });
+                
+                lightbox.appendChild(lightboxImg);
+                lightbox.appendChild(closeBtn);
+                document.body.appendChild(lightbox);
+                document.body.style.overflow = 'hidden';
+                
+                const closeLightbox = function() {
+                    lightbox.style.animation = 'fadeOut 0.3s ease';
+                    setTimeout(() => {
+                        document.body.removeChild(lightbox);
+                        document.body.style.overflow = '';
+                    }, 300);
+                };
+                
+                lightbox.addEventListener('click', function(e) {
+                    if (e.target === lightbox) {
+                        closeLightbox();
+                    }
+                });
+                
+                closeBtn.addEventListener('click', closeLightbox);
+                
+                document.addEventListener('keydown', function escHandler(e) {
+                    if (e.key === 'Escape') {
+                        closeLightbox();
+                        document.removeEventListener('keydown', escHandler);
+                    }
+                });
+            });
+        });
+
+        // Add fade animations
+        const style = document.createElement('style');
+        style.textContent = `
+            @keyframes fadeIn {
+                from { opacity: 0; }
+                to { opacity: 1; }
+            }
+            @keyframes fadeOut {
+                from { opacity: 1; }
+                to { opacity: 0; }
+            }
+        `;
+        document.head.appendChild(style);
+
+        // INTERSECTION OBSERVER FOR ANIMATIONS
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
+            observer.observe(el);
+        });
+
+        // PERFORMANCE OPTIMIZATION
+        let ticking = false;
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(() => {
+                    ticking = false;
+                });
+                ticking = true;
+            }
+        });
+
+        // SERVICE CARD HOVER EFFECTS
+        document.querySelectorAll('.service-card').forEach(card => {
+            card.addEventListener('mouseenter', function() {
+                this.style.boxShadow = '0 20px 60px rgba(195, 227, 33, 0.15)';
+            });
+            
+            card.addEventListener('mouseleave', function() {
+                this.style.boxShadow = '';
+            });
+        });
+
+        // BUTTON RIPPLE EFFECT
+        function createRipple(event) {
+            const button = event.currentTarget;
+            const ripple = document.createElement('span');
+            const rect = button.getBoundingClientRect();
+            const size = Math.max(rect.width, rect.height);
+            const x = event.clientX - rect.left - size / 2;
+            const y = event.clientY - rect.top - size / 2;
+            
+            ripple.style.cssText = `
+                position: absolute;
+                border-radius: 50%;
+                background: rgba(255, 255, 255, 0.5);
+                width: ${size}px;
+                height: ${size}px;
+                left: ${x}px;
+                top: ${y}px;
+                animation: ripple 0.6s ease-out;
+                pointer-events: none;
+            `;
+            
+            button.style.position = 'relative';
+            button.style.overflow = 'hidden';
+            button.appendChild(ripple);
+            
+            setTimeout(() => ripple.remove(), 600);
+        }
+
+        const rippleStyle = document.createElement('style');
+        rippleStyle.textContent = `
+            @keyframes ripple {
+                from {
+                    transform: scale(0);
+                    opacity: 1;
+                }
+                to {
+                    transform: scale(4);
+                    opacity: 0;
+                }
+            }
+        `;
+        document.head.appendChild(rippleStyle);
+
+        document.querySelectorAll('.btn, .btn-cta, .lang-btn').forEach(button => {
+            button.addEventListener('click', createRipple);
+        });
+
+        // EXTERNAL LINK INDICATORS
+        document.querySelectorAll('a[target="_blank"]').forEach(link => {
+            link.addEventListener('click', function() {
+                this.style.opacity = '0.7';
+                setTimeout(() => {
+                    this.style.opacity = '';
+                }, 500);
+            });
+        });
+
+        // VIEWPORT HEIGHT FIX FOR MOBILE
+        function setVH() {
+            let vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
+        }
+        
+        setVH();
+        window.addEventListener('resize', setVH);
+
+        // PREVENT DOUBLE TAP ZOOM ON IOS
+        let lastTouchEnd = 0;
+        document.addEventListener('touchend', function(event) {
+            const now = Date.now();
+            if (now - lastTouchEnd <= 300) {
+                event.preventDefault();
+            }
+            lastTouchEnd = now;
+        }, false);
+
+        // LAZY LOAD IMAGES
+        if ('loading' in HTMLImageElement.prototype) {
+            const images = document.querySelectorAll('img[loading="lazy"]');
+            images.forEach(img => {
+                if (img.dataset.src) {
+                    img.src = img.dataset.src;
+                }
+            });
+        }
+
+        // STRUCTURED DATA FOR SEO
+        const structuredData = {
+            "@context": "https://schema.org",
+            "@type": "AutoRepair",
+            "name": "Mondi Car Wash",
+            "description": "Professional car detailing services in Zakynthos, Greece",
+            "address": {
+                "@type": "PostalAddress",
+                "addressLocality": "Zakynthos",
+                "addressCountry": "GR"
+            },
+            "telephone": "+30-690-000-0000",
+            "priceRange": "€€",
+            "openingHours": ["Mo-Fr 08:00-20:00", "Sa 09:00-18:00"],
+            "image": "https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1200"
+        };
+        
+        const ldJson = document.createElement('script');
+        ldJson.type = 'application/ld+json';
+        ldJson.text = JSON.stringify(structuredData);
+        document.head.appendChild(ldJson);
+
+        // ACCESSIBILITY IMPROVEMENTS
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Tab') {
+                document.body.classList.add('keyboard-nav');
+            }
+        });
+
+        document.addEventListener('mousedown', () => {
+            document.body.classList.remove('keyboard-nav');
+        });
+
+        const accessibilityStyle = document.createElement('style');
+        accessibilityStyle.textContent = `
+            body.keyboard-nav *:focus {
+                outline: 3px solid var(--lime) !important;
+                outline-offset: 2px !important;
+            }
+        `;
+        document.head.appendChild(accessibilityStyle);
+
+        // PERFORMANCE MONITORING
+        window.addEventListener('load', () => {
+            if (window.performance && window.performance.timing) {
+                const loadTime = window.performance.timing.loadEventEnd - window.performance.timing.navigationStart;
+                console.log(`⚡ Page loaded in ${loadTime}ms`);
+            }
+        });
+
+        // PRELOAD CRITICAL IMAGES
+        const preloadImages = [
+            'https://images.unsplash.com/photo-1619642751034-765dfdf7c58e?w=1920'
+        ];
+        
+        preloadImages.forEach(src => {
+            const link = document.createElement('link');
+            link.rel = 'preload';
+            link.as = 'image';
+            link.href = src;
+            document.head.appendChild(link);
+        });
+
+        // ANALYTICS TRACKING (Add your tracking ID)
+        // Example: Google Analytics
+        // window.dataLayer = window.dataLayer || [];
+        // function gtag(){dataLayer.push(arguments);}
+        // gtag('js', new Date());
+        // gtag('config', 'YOUR-GA-ID');
+
+        // Track button clicks
+        document.querySelectorAll('.btn, .btn-cta').forEach(button => {
+            button.addEventListener('click', () => {
+                console.log('Button clicked:', button.textContent.trim());
+                // gtag('event', 'button_click', { button_name: button.textContent });
+            });
+        });
+
+        // CONSOLE BRANDING
+        console.log('%c🚗 MONDI CAR WASH', 'font-size: 24px; font-weight: bold; color: #c3e321; background: #0a0a0a; padding: 10px 20px; border-radius: 5px;');
+        console.log('%c✨ Professional Car Detailing in Zakynthos', 'font-size: 14px; color: #666; font-style: italic;');
+        console.log('%c💼 Need a professional website? Contact us!', 'font-size: 12px; color: #c3e321;');
+
+        // SMOOTH LOADING ANIMATION
+        document.querySelectorAll('.section').forEach((section, index) => {
+            section.style.opacity = '0';
+            section.style.transform = 'translateY(20px)';
+            section.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            setTimeout(() => {
+                section.style.opacity = '1';
+                section.style.transform = 'translateY(0)';
+            }, 100 * index);
+        });
+
+        // TOUCH FEEDBACK FOR MOBILE
+        if ('ontouchstart' in window) {
+            document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(card => {
+                card.addEventListener('touchstart', function() {
+                    this.style.transform = 'scale(0.98)';
+                });
+                
+                card.addEventListener('touchend', function() {
+                    setTimeout(() => {
+                        this.style.transform = '';
+                    }, 100);
+                });
+            });
+        }
+
+        // PRINT STYLES
+        const printStyles = document.createElement('style');
+        printStyles.textContent = `
+            @media print {
+                .navbar, .floating-btns, .cta-section {
+                    display: none !important;
+                }
+                body {
+                    background: white;
+                    color: black;
+                }
+                .section {
+                    page-break-inside: avoid;
+                }
+            }
+        `;
+        document.head.appendChild(printStyles);
+
+        window.addEventListener('beforeprint', () => {
+            document.body.style.background = 'white';
+        });
+        
+        window.addEventListener('afterprint', () => {
+            document.body.style.background = '';
+        });
+
+        // FORM VALIDATION (if you add contact form later)
+        function validateEmail(email) {
+            const re = /^[^\s@]+@[^\s@]+\.[^\s@]+$/;
+            return re.test(email);
+        }
+
+        function validatePhone(phone) {
+            const re = /^[\d\s\+\-$$$$]+$/;
+            return re.test(phone) && phone.length >= 10;
+        }
+
+        // COOKIE CONSENT (Optional - add if needed)
+        function checkCookieConsent() {
+            const consent = localStorage.getItem('cookieConsent');
+            if (!consent) {
+                // Show cookie banner
+                // You can implement this based on your needs
+            }
+        }
+        
+        // checkCookieConsent();
+
+        // ERROR HANDLING
+        window.addEventListener('error', (e) => {
+            console.error('An error occurred:', e.error);
+        });
+
+        // OFFLINE DETECTION
+        window.addEventListener('online', () => {
+            console.log('✅ Connection restored');
+        });
+
+        window.addEventListener('offline', () => {
+            console.log('❌ Connection lost');
+        });
+
+        // CURRENCY FORMATTER (if you need dynamic prices)
+        function formatPrice(price, currency = 'EUR') {
+            return new Intl.NumberFormat('el-GR', {
+                style: 'currency',
+                currency: currency
+            }).format(price);
+        }
+
+        // DATE FORMATTER
+        function formatDate(date) {
+            return new Intl.DateTimeFormat('el-GR', {
+                year: 'numeric',
+                month: 'long',
+                day: 'numeric'
+            }).format(date);
+        }
+
+        // DEBOUNCE UTILITY
+        function debounce(func, wait) {
+            let timeout;
+            return function executedFunction(...args) {
+                const later = () => {
+                    clearTimeout(timeout);
+                    func(...args);
+                };
+                clearTimeout(timeout);
+                timeout = setTimeout(later, wait);
+            };
+        }
+
+        // THROTTLE UTILITY
+        function throttle(func, limit) {
+            let inThrottle;
+            return function() {
+                const args = arguments;
+                const context = this;
+                if (!inThrottle) {
+                    func.apply(context, args);
+                    inThrottle = true;
+                    setTimeout(() => inThrottle = false, limit);
+                }
+            };
+        }
+
+        // SCROLL PROGRESS INDICATOR (Optional)
+        const progressBar = document.createElement('div');
+        progressBar.style.cssText = `
+            position: fixed;
+            top: 0;
+            left: 0;
+            height: 3px;
+            background: var(--lime);
+            width: 0;
+            z-index: 10001;
+            transition: width 0.1s ease;
+        `;
+        document.body.appendChild(progressBar);
+
+        window.addEventListener('scroll', throttle(() => {
+            const windowHeight = window.innerHeight;
+            const documentHeight = document.documentElement.scrollHeight - windowHeight;
+            const scrolled = window.scrollY;
+            const progress = (scrolled / documentHeight) * 100;
+            progressBar.style.width = progress + '%';
+        }, 50));
+
+        // PREFERS REDUCED MOTION
+        const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+        
+        if (prefersReducedMotion) {
+            document.querySelectorAll('*').forEach(el => {
+                el.style.animation = 'none';
+                el.style.transition = 'none';
+            });
+        }
+
+        // READY STATE
+        console.log('🚀 Mondi Car Wash website fully loaded and ready!');
+        
+        // Initialize everything
+        document.addEventListener('DOMContentLoaded', () => {
+            console.log('✅ DOM Content Loaded');
+        });
+
+    </script>
+</body>
+</html>
+
+
