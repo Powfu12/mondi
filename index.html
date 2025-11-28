@@ -169,6 +169,12 @@
             list-style: none;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-link {
             color: var(--white);
             text-decoration: none;
@@ -199,9 +205,9 @@
 
         .lang-switch {
             display: flex;
-            gap: 8px;
+            gap: 6px;
             background: var(--dark-gray);
-            padding: 6px;
+            padding: 5px;
             border-radius: 8px;
         }
 
@@ -209,16 +215,22 @@
             background: transparent;
             border: none;
             color: var(--light-gray);
-            padding: 8px 16px;
+            padding: 6px 12px;
             border-radius: 6px;
             cursor: pointer;
-            font-weight: 600;
-            font-size: 0.9rem;
+            font-weight: 700;
+            font-size: 0.85rem;
             transition: all 0.3s;
+            min-width: 40px;
         }
 
         .lang-btn.active {
             background: var(--lime);
+            color: var(--dark);
+        }
+
+        .lang-btn:hover {
+            background: var(--lime-dark);
             color: var(--dark);
         }
 
@@ -229,6 +241,7 @@
             color: var(--white);
             font-size: 1.5rem;
             cursor: pointer;
+            padding: 5px;
         }
 
         /* HERO SECTION */
@@ -525,14 +538,16 @@
             transition: transform 0.4s;
         }
 
-        .service-card:hover {
-            transform: translateY(-10px);
-            border-color: rgba(195, 227, 33, 0.3);
-            background: var(--medium-gray);
-        }
+        @media (hover: hover) {
+            .service-card:hover {
+                transform: translateY(-10px);
+                border-color: rgba(195, 227, 33, 0.3);
+                background: var(--medium-gray);
+            }
 
-        .service-card:hover::before {
-            transform: scaleX(1);
+            .service-card:hover::before {
+                transform: scaleX(1);
+            }
         }
 
         .service-icon {
@@ -552,13 +567,15 @@
             color: var(--lime);
         }
 
-        .service-card:hover .service-icon {
-            background: var(--lime);
-            transform: scale(1.1);
-        }
+        @media (hover: hover) {
+            .service-card:hover .service-icon {
+                background: var(--lime);
+                transform: scale(1.1);
+            }
 
-        .service-card:hover .service-icon i {
-            color: var(--dark);
+            .service-card:hover .service-icon i {
+                color: var(--dark);
+            }
         }
 
         .service-title {
@@ -941,14 +958,30 @@
                 padding: 40px;
                 transition: left 0.3s;
                 border-top: 1px solid rgba(255, 255, 255, 0.05);
+                gap: 30px;
             }
 
             .nav-menu.active {
                 left: 0;
             }
 
+            .nav-right {
+                gap: 12px;
+            }
+
             .mobile-menu-btn {
                 display: block;
+            }
+
+            .lang-switch {
+                padding: 4px;
+                gap: 4px;
+            }
+
+            .lang-btn {
+                padding: 6px 10px;
+                font-size: 0.8rem;
+                min-width: 35px;
             }
 
             .section {
@@ -980,41 +1013,66 @@
 
             /* MOBILE CAROUSEL IMPROVEMENTS */
             .services-carousel-container {
-                padding: 0 60px;
+                padding: 0 55px;
             }
 
             .carousel-btn {
-                width: 50px;
-                height: 50px;
-                font-size: 1.2rem;
+                width: 48px;
+                height: 48px;
+                font-size: 1.1rem;
+                box-shadow: 0 6px 20px rgba(195, 227, 33, 0.4);
             }
 
             .carousel-prev {
-                left: 5px;
+                left: 3px;
             }
 
             .carousel-next {
-                right: 5px;
+                right: 3px;
             }
 
             .service-card {
-                padding: 40px 30px;
+                padding: 35px 25px;
+            }
+
+            .service-icon {
+                width: 65px;
+                height: 65px;
+                margin-bottom: 25px;
+            }
+
+            .service-icon i {
+                font-size: 1.8rem;
             }
 
             .service-title {
-                font-size: 1.4rem;
+                font-size: 1.35rem;
+                margin-bottom: 15px;
             }
 
             .service-description {
-                font-size: 0.95rem;
+                font-size: 0.92rem;
+                margin-bottom: 25px;
+                line-height: 1.5;
             }
 
             .service-price {
-                font-size: 2rem;
+                font-size: 2.2rem;
+                margin-bottom: 5px;
+            }
+
+            .service-features {
+                margin-top: 22px;
+                padding-top: 22px;
             }
 
             .service-features li {
-                font-size: 0.9rem;
+                font-size: 0.88rem;
+                padding: 9px 0;
+            }
+
+            .carousel-dots {
+                margin-top: 35px;
             }
         }
 
@@ -1028,127 +1086,220 @@
                 justify-content: center;
             }
 
+            .section {
+                padding: 60px 20px;
+            }
+
             /* MOBILE CAROUSEL - SMALLER SCREENS */
             .services-carousel-container {
-                padding: 0 45px;
-                margin: 0 -10px;
+                padding: 0 42px;
+                margin: 0;
             }
 
             .carousel-btn {
-                width: 40px;
-                height: 40px;
-                font-size: 1rem;
-                box-shadow: 0 4px 15px rgba(195, 227, 33, 0.4);
+                width: 38px;
+                height: 38px;
+                font-size: 0.95rem;
+                box-shadow: 0 5px 18px rgba(195, 227, 33, 0.45);
             }
 
             .carousel-btn:hover {
                 transform: translateY(-50%) scale(1.05);
             }
 
+            .carousel-btn:active {
+                transform: translateY(-50%) scale(0.9);
+            }
+
             .carousel-prev {
-                left: 0;
+                left: 2px;
             }
 
             .carousel-next {
-                right: 0;
+                right: 2px;
             }
 
             .service-card {
-                padding: 30px 20px;
-                margin: 0 5px;
+                padding: 28px 18px;
+                margin: 0 3px;
             }
 
             .service-icon {
-                width: 60px;
-                height: 60px;
-                margin-bottom: 20px;
+                width: 58px;
+                height: 58px;
+                margin-bottom: 18px;
             }
 
             .service-icon i {
-                font-size: 1.5rem;
+                font-size: 1.4rem;
             }
 
             .service-title {
-                font-size: 1.3rem;
-                margin-bottom: 12px;
+                font-size: 1.25rem;
+                margin-bottom: 10px;
+                line-height: 1.3;
             }
 
             .service-description {
-                font-size: 0.9rem;
-                margin-bottom: 20px;
-                line-height: 1.6;
+                font-size: 0.87rem;
+                margin-bottom: 18px;
+                line-height: 1.5;
             }
 
             .service-price {
                 font-size: 2rem;
-                margin-bottom: 8px;
+                margin-bottom: 6px;
             }
 
             .service-features {
-                margin-top: 20px;
-                padding-top: 20px;
+                margin-top: 18px;
+                padding-top: 18px;
             }
 
             .service-features li {
-                font-size: 0.85rem;
-                padding: 8px 0;
-                gap: 10px;
+                font-size: 0.83rem;
+                padding: 7px 0;
+                gap: 8px;
             }
 
             .service-features li i {
-                font-size: 0.7rem;
+                font-size: 0.65rem;
+                flex-shrink: 0;
             }
 
             .carousel-dots {
-                gap: 8px;
-                margin-top: 30px;
+                gap: 7px;
+                margin-top: 28px;
             }
 
             .carousel-dot {
-                width: 10px;
-                height: 10px;
+                width: 9px;
+                height: 9px;
             }
 
             .carousel-dot.active {
-                width: 30px;
+                width: 28px;
             }
 
             .footer-content {
                 grid-template-columns: 1fr;
                 gap: 40px;
             }
+
+            .nav-container {
+                padding: 15px 20px;
+            }
+
+            .lang-btn {
+                padding: 5px 8px;
+                font-size: 0.75rem;
+                min-width: 32px;
+            }
         }
 
         @media (max-width: 480px) {
+            .section {
+                padding: 50px 15px;
+            }
+
             .services-carousel-container {
-                padding: 0 40px;
+                padding: 0 36px;
             }
 
             .carousel-btn {
-                width: 35px;
-                height: 35px;
-                font-size: 0.9rem;
+                width: 34px;
+                height: 34px;
+                font-size: 0.85rem;
+                box-shadow: 0 4px 15px rgba(195, 227, 33, 0.5);
+            }
+
+            .carousel-prev {
+                left: 1px;
+            }
+
+            .carousel-next {
+                right: 1px;
             }
 
             .service-card {
-                padding: 25px 15px;
+                padding: 22px 14px;
+                margin: 0 2px;
+            }
+
+            .service-icon {
+                width: 52px;
+                height: 52px;
+                margin-bottom: 15px;
+            }
+
+            .service-icon i {
+                font-size: 1.3rem;
             }
 
             .service-title {
-                font-size: 1.2rem;
+                font-size: 1.15rem;
+                margin-bottom: 8px;
             }
 
             .service-description {
-                font-size: 0.85rem;
+                font-size: 0.82rem;
+                margin-bottom: 15px;
             }
 
             .service-price {
-                font-size: 1.8rem;
+                font-size: 1.85rem;
+            }
+
+            .service-features {
+                margin-top: 15px;
+                padding-top: 15px;
+            }
+
+            .service-features li {
+                font-size: 0.8rem;
+                padding: 6px 0;
+            }
+
+            .carousel-dots {
+                margin-top: 25px;
+                gap: 6px;
+            }
+
+            .carousel-dot {
+                width: 8px;
+                height: 8px;
+            }
+
+            .carousel-dot.active {
+                width: 24px;
             }
 
             .hero-cta a {
-                font-size: 0.9rem;
-                padding: 15px 30px;
+                font-size: 0.88rem;
+                padding: 14px 28px;
+            }
+
+            .nav-logo {
+                height: 42px;
+            }
+
+            .lang-switch {
+                padding: 3px;
+                gap: 3px;
+            }
+
+            .lang-btn {
+                padding: 4px 7px;
+                font-size: 0.72rem;
+                min-width: 30px;
+            }
+
+            .section-title {
+                font-size: 2rem;
+            }
+
+            .section-description {
+                font-size: 1rem;
             }
         }
     </style>
@@ -1168,22 +1319,23 @@
     <nav class="navbar">
         <div class="nav-container">
             <img src="mondi_logo_1500_smooth.png" alt="Mondi Car Wash" class="nav-logo">
-            
+
             <ul class="nav-menu">
                 <li><a href="#services" class="nav-link" data-translate="navServices">Services</a></li>
                 <li><a href="#gallery" class="nav-link" data-translate="navGallery">Gallery</a></li>
                 <li><a href="#contact" class="nav-link" data-translate="navContact">Contact</a></li>
-                <li>
-                    <div class="lang-switch">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="gr">ΕΛ</button>
-                    </div>
-                </li>
             </ul>
 
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="gr">ΕΛ</button>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
