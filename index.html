@@ -408,11 +408,92 @@
             line-height: 1.8;
         }
 
-        /* SERVICES GRID */
-        .services-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(320px, 1fr));
+        /* SERVICES CAROUSEL */
+        .services-carousel-container {
+            position: relative;
+            max-width: 100%;
+            margin: 0 auto;
+            padding: 0 80px;
+        }
+
+        .services-carousel {
+            overflow: hidden;
+            border-radius: 16px;
+        }
+
+        .services-track {
+            display: flex;
+            transition: transform 0.5s ease-in-out;
             gap: 30px;
+        }
+
+        .services-track .service-card {
+            min-width: 100%;
+            flex-shrink: 0;
+        }
+
+        .carousel-btn {
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: var(--lime);
+            color: var(--dark);
+            border: none;
+            font-size: 1.5rem;
+            cursor: pointer;
+            transition: all 0.3s;
+            z-index: 10;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            box-shadow: 0 8px 25px rgba(195, 227, 33, 0.3);
+        }
+
+        .carousel-btn:hover {
+            transform: translateY(-50%) scale(1.1);
+            box-shadow: 0 12px 35px rgba(195, 227, 33, 0.5);
+        }
+
+        .carousel-btn:active {
+            transform: translateY(-50%) scale(0.95);
+        }
+
+        .carousel-prev {
+            left: 0;
+        }
+
+        .carousel-next {
+            right: 0;
+        }
+
+        .carousel-dots {
+            display: flex;
+            justify-content: center;
+            gap: 12px;
+            margin-top: 40px;
+        }
+
+        .carousel-dot {
+            width: 12px;
+            height: 12px;
+            border-radius: 50%;
+            background: var(--medium-gray);
+            border: 2px solid rgba(195, 227, 33, 0.3);
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .carousel-dot.active {
+            background: var(--lime);
+            width: 40px;
+            border-radius: 6px;
+        }
+
+        .carousel-dot:hover {
+            background: var(--lime-dark);
         }
 
         .service-card {
@@ -901,8 +982,14 @@
                 justify-content: center;
             }
 
-            .services-grid {
-                grid-template-columns: 1fr;
+            .services-carousel-container {
+                padding: 0 50px;
+            }
+
+            .carousel-btn {
+                width: 45px;
+                height: 45px;
+                font-size: 1.2rem;
             }
 
             .footer-content {
@@ -972,6 +1059,10 @@
                     <i class="fas fa-calendar-check"></i>
                     <span data-translate="bookNow">Book Appointment</span>
                 </a>
+                <a href="https://maps.google.com/?q=Zakynthos+Mondi+Car+Wash" target="_blank" class="btn btn-secondary">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span data-translate="ourLocation">Our Location</span>
+                </a>
                 <a href="#services" class="btn btn-secondary">
                     <i class="fas fa-th-large"></i>
                     <span data-translate="viewServices">View Services</span>
@@ -990,63 +1081,106 @@
             </p>
         </div>
 
-        <div class="services-grid">
-            <!-- Service 1 -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-spray-can"></i>
+        <div class="services-carousel-container">
+            <button class="carousel-btn carousel-prev" aria-label="Previous service">
+                <i class="fas fa-chevron-left"></i>
+            </button>
+
+            <div class="services-carousel">
+                <div class="services-track">
+                    <!-- Service 1 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-spray-can"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="service1Title">Πλύσιμο Μέσα-Έξω</h3>
+                        <p class="service-description" data-translate="service1Desc">
+                            Πλήρης καθαρισμός εσωτερικού και εξωτερικού χώρου του οχήματος.
+                        </p>
+                        <div class="service-price">€15</div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature1">Εξωτερικό πλύσιμο</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature2">Εσωτερικός καθαρισμός</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature3">Καθαρισμός τζαμιών</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 2 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-lightbulb"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="service2Title">Γιάλισμα Φαναριών</h3>
+                        <p class="service-description" data-translate="service2Desc">
+                            Επαγγελματικό γιάλισμα και αποκατάσταση φαναριών για καλύτερη ορατότητα.
+                        </p>
+                        <div class="service-price">€40</div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature4">Αφαίρεση θαμπάδας</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature5">Γυάλισμα φαναριών</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature6">UV προστασία</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 3 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-leaf"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="service3Title">Βιολογικό</h3>
+                        <p class="service-description" data-translate="service3Desc">
+                            Βιολογικός καθαρισμός με φιλικά προς το περιβάλλον προϊόντα.
+                        </p>
+                        <div class="service-price">€85</div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature7">Οικολογικά προϊόντα</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature8">Πλήρης καθαρισμός</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature9">Προστασία βαφής</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 4 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-star"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="service4Title">Πλύσιμο Premium</h3>
+                        <p class="service-description" data-translate="service4Desc">
+                            Premium πλύσιμο μέσα-έξω με premium προϊόντα και περιποίηση.
+                        </p>
+                        <div class="service-price">€40</div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature10">Premium προϊόντα</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature11">Κερί προστασίας</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature12">Περιποίηση ταμπλό</span></li>
+                        </ul>
+                    </div>
+
+                    <!-- Service 5 -->
+                    <div class="service-card">
+                        <div class="service-icon">
+                            <i class="fas fa-gem"></i>
+                        </div>
+                        <h3 class="service-title" data-translate="service5Title">Βιολογικό Premium</h3>
+                        <p class="service-description" data-translate="service5Desc">
+                            Η απόλυτη εμπειρία βιολογικού καθαρισμού με premium υλικά.
+                        </p>
+                        <div class="service-price">€130</div>
+                        <ul class="service-features">
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature13">Premium βιολογικά προϊόντα</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature14">Κεραμική προστασία</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature15">Πλήρης αποκατάσταση</span></li>
+                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature16">Διάρκεια 3-4 ώρες</span></li>
+                        </ul>
+                    </div>
                 </div>
-                <h3 class="service-title" data-translate="service1Title">Exterior Wash</h3>
-                <p class="service-description" data-translate="service1Desc">
-                    Complete exterior cleaning with premium shampoo, wheel cleaning, tire dressing, and hand drying.
-                </p>
-                <div class="service-price">€20</div>
-                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
-                <ul class="service-features">
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature1">Hand wash & dry</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature2">Wheel & tire cleaning</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature3">Window cleaning</span></li>
-                </ul>
             </div>
 
-            <!-- Service 2 -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-star"></i>
-                </div>
-                <h3 class="service-title" data-translate="service2Title">Premium Detail</h3>
-                <p class="service-description" data-translate="service2Desc">
-                    Full exterior and interior detailing including wax protection, interior vacuum, and surface treatment.
-                </p>
-                <div class="service-price">€45</div>
-                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
-                <ul class="service-features">
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature4">Everything in Exterior</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature5">Interior deep clean</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature6">Wax protection</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature7">Dashboard treatment</span></li>
-                </ul>
-            </div>
+            <button class="carousel-btn carousel-next" aria-label="Next service">
+                <i class="fas fa-chevron-right"></i>
+            </button>
 
-            <!-- Service 3 -->
-            <div class="service-card">
-                <div class="service-icon">
-                    <i class="fas fa-gem"></i>
-                </div>
-                <h3 class="service-title" data-translate="service3Title">Complete Detailing</h3>
-                <p class="service-description" data-translate="service3Desc">
-                    Ultimate detailing experience with paint correction, ceramic coating, and comprehensive interior restoration.
-                </p>
-                <div class="service-price">€120</div>
-                <div class="service-price-label" data-translate="startingFrom">Starting from</div>
-                <ul class="service-features">
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature8">Full Premium service</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature9">Paint correction</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature10">Ceramic coating</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature11">Engine bay cleaning</span></li>
-                    <li><i class="fas fa-check-circle"></i> <span data-translate="feature12">Headlight restoration</span></li>
-                </ul>
-            </div>
+            <div class="carousel-dots"></div>
         </div>
     </section>
 
@@ -1300,29 +1434,37 @@
                 heroTitle2: "Perfect",
                 heroDesc: "Premium car detailing, beyond a simple wash.",
                 bookNow: "Book Appointment",
+                ourLocation: "Our Location",
                 viewServices: "View Services",
                 servicesLabel: "OUR SERVICES",
                 servicesTitle: "Premium Car Care Packages",
                 servicesDesc: "Choose from our range of professional detailing services designed to keep your vehicle in pristine condition.",
-                service1Title: "Exterior Wash",
-                service1Desc: "Complete exterior cleaning with premium shampoo, wheel cleaning, tire dressing, and hand drying.",
-                service2Title: "Premium Detail",
-                service2Desc: "Full exterior and interior detailing including wax protection, interior vacuum, and surface treatment.",
-                service3Title: "Complete Detailing",
-                service3Desc: "Ultimate detailing experience with paint correction, ceramic coating, and comprehensive interior restoration.",
-                startingFrom: "Starting from",
-                feature1: "Hand wash & dry",
-                feature2: "Wheel & tire cleaning",
+                service1Title: "Inside-Outside Wash",
+                service1Desc: "Complete interior and exterior cleaning of your vehicle.",
+                service2Title: "Headlight Polishing",
+                service2Desc: "Professional headlight polishing and restoration for better visibility.",
+                service3Title: "Biological",
+                service3Desc: "Biological cleaning with eco-friendly products.",
+                service4Title: "Premium Wash",
+                service4Desc: "Premium inside-outside wash with premium products and care.",
+                service5Title: "Biological Premium",
+                service5Desc: "The ultimate biological cleaning experience with premium materials.",
+                feature1: "Exterior wash",
+                feature2: "Interior cleaning",
                 feature3: "Window cleaning",
-                feature4: "Everything in Exterior",
-                feature5: "Interior deep clean",
-                feature6: "Wax protection",
-                feature7: "Dashboard treatment",
-                feature8: "Full Premium service",
-                feature9: "Paint correction",
-                feature10: "Ceramic coating",
-                feature11: "Engine bay cleaning",
-                feature12: "Headlight restoration",
+                feature4: "Haze removal",
+                feature5: "Headlight polishing",
+                feature6: "UV protection",
+                feature7: "Eco-friendly products",
+                feature8: "Full cleaning",
+                feature9: "Paint protection",
+                feature10: "Premium products",
+                feature11: "Wax protection",
+                feature12: "Dashboard treatment",
+                feature13: "Premium bio products",
+                feature14: "Ceramic coating",
+                feature15: "Complete restoration",
+                feature16: "Duration 3-4 hours",
                 whyLabel: "WHY CHOOSE US",
                 whyTitle: "Excellence in Every Detail",
                 whyDesc: "We combine professional expertise with premium products to deliver outstanding results every time.",
@@ -1377,29 +1519,37 @@
                 heroTitle2: "Perfect",
                 heroDesc: "Premium περιποίηση αυτοκινήτου, πολύ περισσότερο από ένα απλό πλύσιμο.",
                 bookNow: "Κλείστε Ραντεβού",
+                ourLocation: "Η Τοποθεσία μας",
                 viewServices: "Δείτε Υπηρεσίες",
                 servicesLabel: "ΟΙ ΥΠΗΡΕΣΙΕΣ ΜΑΣ",
                 servicesTitle: "Πακέτα Premium Φροντίδας",
                 servicesDesc: "Επιλέξτε από τη γκάμα επαγγελματικών υπηρεσιών detailing που διατηρούν το όχημά σας σε άριστη κατάσταση.",
-                service1Title: "Εξωτερικό Πλύσιμο",
-                service1Desc: "Πλήρης εξωτερικός καθαρισμός με premium σαμπουάν, καθαρισμός ζαντών, γυάλισμα λάστιχων και στέγνωμα χειρός.",
-                service2Title: "Premium Detailing",
-                service2Desc: "Πλήρης εξωτερικός και εσωτερικός καθαρισμός με κερί προστασίας, ηλεκτρική σκούπα και περιποίηση επιφανειών.",
-                service3Title: "Πλήρες Detailing",
-                service3Desc: "Η απόλυτη εμπειρία detailing με διόρθωση βαφής, κεραμική επίστρωση και ολοκληρωμένη αποκατάσταση εσωτερικού.",
-                startingFrom: "Ξεκινώντας από",
-                feature1: "Πλύσιμο & στέγνωμα χειρός",
-                feature2: "Καθαρισμός ζαντών & λάστιχων",
+                service1Title: "Πλύσιμο Μέσα-Έξω",
+                service1Desc: "Πλήρης καθαρισμός εσωτερικού και εξωτερικού χώρου του οχήματος.",
+                service2Title: "Γιάλισμα Φαναριών",
+                service2Desc: "Επαγγελματικό γιάλισμα και αποκατάσταση φαναριών για καλύτερη ορατότητα.",
+                service3Title: "Βιολογικό",
+                service3Desc: "Βιολογικός καθαρισμός με φιλικά προς το περιβάλλον προϊόντα.",
+                service4Title: "Πλύσιμο Premium",
+                service4Desc: "Premium πλύσιμο μέσα-έξω με premium προϊόντα και περιποίηση.",
+                service5Title: "Βιολογικό Premium",
+                service5Desc: "Η απόλυτη εμπειρία βιολογικού καθαρισμού με premium υλικά.",
+                feature1: "Εξωτερικό πλύσιμο",
+                feature2: "Εσωτερικός καθαρισμός",
                 feature3: "Καθαρισμός τζαμιών",
-                feature4: "Όλα από το Εξωτερικό",
-                feature5: "Βαθύς καθαρισμός εσωτερικού",
-                feature6: "Προστασία κεριού",
-                feature7: "Περιποίηση ταμπλό",
-                feature8: "Πλήρης Premium υπηρεσία",
-                feature9: "Διόρθωση βαφής",
-                feature10: "Κεραμική επίστρωση",
-                feature11: "Καθαρισμός μηχανής",
-                feature12: "Αποκατάσταση φαναριών",
+                feature4: "Αφαίρεση θαμπάδας",
+                feature5: "Γυάλισμα φαναριών",
+                feature6: "UV προστασία",
+                feature7: "Οικολογικά προϊόντα",
+                feature8: "Πλήρης καθαρισμός",
+                feature9: "Προστασία βαφής",
+                feature10: "Premium προϊόντα",
+                feature11: "Κερί προστασίας",
+                feature12: "Περιποίηση ταμπλό",
+                feature13: "Premium βιολογικά προϊόντα",
+                feature14: "Κεραμική προστασία",
+                feature15: "Πλήρης αποκατάσταση",
+                feature16: "Διάρκεια 3-4 ώρες",
                 whyLabel: "ΓΙΑΤΙ ΝΑ ΜΑΣ ΕΠΙΛΕΞΕΤΕ",
                 whyTitle: "Αριστεία σε Κάθε Λεπτομέρεια",
                 whyDesc: "Συνδυάζουμε επαγγελματική εμπειρία με premium προϊόντα για να προσφέρουμε εξαιρετικά αποτελέσματα κάθε φορά.",
@@ -1484,6 +1634,94 @@
         if (savedLang) {
             translatePage(savedLang);
         }
+
+        // SERVICES CAROUSEL
+        let currentSlide = 0;
+        const track = document.querySelector('.services-track');
+        const slides = document.querySelectorAll('.service-card');
+        const prevBtn = document.querySelector('.carousel-prev');
+        const nextBtn = document.querySelector('.carousel-next');
+        const dotsContainer = document.querySelector('.carousel-dots');
+        const totalSlides = slides.length;
+
+        // Create dots
+        for (let i = 0; i < totalSlides; i++) {
+            const dot = document.createElement('div');
+            dot.classList.add('carousel-dot');
+            if (i === 0) dot.classList.add('active');
+            dot.addEventListener('click', () => goToSlide(i));
+            dotsContainer.appendChild(dot);
+        }
+
+        const dots = document.querySelectorAll('.carousel-dot');
+
+        function updateCarousel() {
+            const offset = -currentSlide * 100;
+            track.style.transform = `translateX(${offset}%)`;
+
+            dots.forEach((dot, index) => {
+                dot.classList.toggle('active', index === currentSlide);
+            });
+        }
+
+        function nextSlide() {
+            currentSlide = (currentSlide + 1) % totalSlides;
+            updateCarousel();
+        }
+
+        function prevSlide() {
+            currentSlide = (currentSlide - 1 + totalSlides) % totalSlides;
+            updateCarousel();
+        }
+
+        function goToSlide(index) {
+            currentSlide = index;
+            updateCarousel();
+        }
+
+        nextBtn.addEventListener('click', nextSlide);
+        prevBtn.addEventListener('click', prevSlide);
+
+        // Auto-play carousel (optional - every 5 seconds)
+        let autoplayInterval = setInterval(nextSlide, 5000);
+
+        // Pause autoplay on hover
+        const carouselContainer = document.querySelector('.services-carousel-container');
+        carouselContainer.addEventListener('mouseenter', () => {
+            clearInterval(autoplayInterval);
+        });
+
+        carouselContainer.addEventListener('mouseleave', () => {
+            autoplayInterval = setInterval(nextSlide, 5000);
+        });
+
+        // Swipe support for mobile
+        let touchStartX = 0;
+        let touchEndX = 0;
+
+        track.addEventListener('touchstart', (e) => {
+            touchStartX = e.changedTouches[0].screenX;
+        });
+
+        track.addEventListener('touchend', (e) => {
+            touchEndX = e.changedTouches[0].screenX;
+            handleSwipe();
+        });
+
+        function handleSwipe() {
+            if (touchStartX - touchEndX > 50) {
+                nextSlide();
+            }
+            if (touchEndX - touchStartX > 50) {
+                prevSlide();
+            }
+        }
+
+        // Keyboard navigation
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowLeft') prevSlide();
+            if (e.key === 'ArrowRight') nextSlide();
+        });
 
         // LOADER
         window.addEventListener('load', () => {
@@ -1684,7 +1922,7 @@
             });
         }, observerOptions);
 
-        document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(el => {
+        document.querySelectorAll('.feature-item, .gallery-item').forEach(el => {
             el.style.opacity = '0';
             el.style.transform = 'translateY(30px)';
             el.style.transition = 'opacity 0.6s ease, transform 0.6s ease';
@@ -1702,16 +1940,7 @@
             }
         });
 
-        // SERVICE CARD HOVER EFFECTS
-        document.querySelectorAll('.service-card').forEach(card => {
-            card.addEventListener('mouseenter', function() {
-                this.style.boxShadow = '0 20px 60px rgba(195, 227, 33, 0.15)';
-            });
-            
-            card.addEventListener('mouseleave', function() {
-                this.style.boxShadow = '';
-            });
-        });
+        // Carousel hover effects are handled by CSS
 
         // BUTTON RIPPLE EFFECT
         function createRipple(event) {
@@ -1896,11 +2125,11 @@
 
         // TOUCH FEEDBACK FOR MOBILE
         if ('ontouchstart' in window) {
-            document.querySelectorAll('.service-card, .feature-item, .gallery-item').forEach(card => {
+            document.querySelectorAll('.feature-item, .gallery-item').forEach(card => {
                 card.addEventListener('touchstart', function() {
                     this.style.transform = 'scale(0.98)';
                 });
-                
+
                 card.addEventListener('touchend', function() {
                     setTimeout(() => {
                         this.style.transform = '';
