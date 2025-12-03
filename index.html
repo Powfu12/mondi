@@ -235,6 +235,12 @@
             list-style: none;
         }
 
+        .nav-right {
+            display: flex;
+            align-items: center;
+            gap: 20px;
+        }
+
         .nav-link {
             color: var(--white);
             text-decoration: none;
@@ -1641,22 +1647,23 @@
     <nav class="navbar">
         <div class="nav-container">
             <img src="mondi_logo_1500_smooth.png" alt="Mondi Car Wash" class="nav-logo">
-            
+
             <ul class="nav-menu">
                 <li><a href="#services" class="nav-link" data-translate="navServices">Services</a></li>
                 <li><a href="#gallery" class="nav-link" data-translate="navGallery">Gallery</a></li>
                 <li><a href="#contact" class="nav-link" data-translate="navContact">Contact</a></li>
-                <li>
-                    <div class="lang-switch">
-                        <button class="lang-btn active" data-lang="en">EN</button>
-                        <button class="lang-btn" data-lang="gr">ΕΛ</button>
-                    </div>
-                </li>
             </ul>
 
-            <button class="mobile-menu-btn">
-                <i class="fas fa-bars"></i>
-            </button>
+            <div class="nav-right">
+                <div class="lang-switch">
+                    <button class="lang-btn active" data-lang="en">EN</button>
+                    <button class="lang-btn" data-lang="gr">ΕΛ</button>
+                </div>
+
+                <button class="mobile-menu-btn">
+                    <i class="fas fa-bars"></i>
+                </button>
+            </div>
         </div>
     </nav>
 
