@@ -602,6 +602,333 @@
             font-size: 0.8rem;
         }
 
+        /* PREMIUM SERVICES SECTION - REDESIGNED */
+        .services-premium {
+            background: #000000;
+            position: relative;
+            min-height: 100vh;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            padding: 80px 40px;
+            overflow: hidden;
+        }
+
+        /* Hexagonal pattern background */
+        .services-premium::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background-image:
+                repeating-linear-gradient(0deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px),
+                repeating-linear-gradient(60deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px),
+                repeating-linear-gradient(120deg, transparent, transparent 35px, rgba(255,255,255,0.03) 35px, rgba(255,255,255,0.03) 36px);
+            opacity: 0.4;
+            pointer-events: none;
+        }
+
+        /* Gradient overlay */
+        .services-premium::after {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: radial-gradient(circle at center, rgba(195, 227, 33, 0.05) 0%, transparent 70%);
+            pointer-events: none;
+        }
+
+        .services-premium-container {
+            position: relative;
+            z-index: 2;
+            max-width: 600px;
+            width: 100%;
+            margin: 0 auto;
+        }
+
+        /* Logo Styling */
+        .services-logo {
+            text-align: center;
+            margin-bottom: 60px;
+            animation: fadeInDown 1s ease;
+        }
+
+        .premium-logo {
+            width: 200px;
+            height: auto;
+            filter: drop-shadow(0 10px 30px rgba(195, 227, 33, 0.3));
+        }
+
+        /* Services List */
+        .services-list {
+            display: flex;
+            flex-direction: column;
+            gap: 20px;
+            margin-bottom: 50px;
+        }
+
+        /* Service Item - Button Style */
+        .service-item {
+            background: rgba(0, 0, 0, 0.5);
+            border: 2px solid rgba(255, 255, 255, 0.8);
+            border-radius: 50px;
+            padding: 18px 35px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            transition: all 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+            cursor: pointer;
+            position: relative;
+            overflow: hidden;
+            backdrop-filter: blur(10px);
+            animation: fadeInUp 0.8s ease backwards;
+        }
+
+        .service-item:nth-child(1) { animation-delay: 0.1s; }
+        .service-item:nth-child(2) { animation-delay: 0.2s; }
+        .service-item:nth-child(3) { animation-delay: 0.3s; }
+        .service-item:nth-child(4) { animation-delay: 0.4s; }
+        .service-item:nth-child(5) { animation-delay: 0.5s; }
+        .service-item:nth-child(6) { animation-delay: 0.6s; }
+        .service-item:nth-child(7) { animation-delay: 0.7s; }
+
+        /* Shine effect */
+        .service-item::before {
+            content: '';
+            position: absolute;
+            top: -50%;
+            left: -50%;
+            width: 200%;
+            height: 200%;
+            background: linear-gradient(
+                45deg,
+                transparent,
+                transparent 40%,
+                rgba(255, 255, 255, 0.1) 50%,
+                transparent 60%,
+                transparent
+            );
+            transform: translateX(-100%);
+            transition: transform 0.6s;
+        }
+
+        .service-item:hover::before {
+            transform: translateX(100%);
+        }
+
+        /* Premium Service Item - Gold Border */
+        .service-item.premium {
+            border-color: var(--lime);
+            border-width: 2px;
+            box-shadow: 0 0 20px rgba(195, 227, 33, 0.3);
+        }
+
+        .service-item.premium:hover {
+            box-shadow: 0 0 30px rgba(195, 227, 33, 0.5);
+            transform: translateY(-3px);
+            border-color: var(--lime);
+        }
+
+        /* Standard Service Item Hover */
+        .service-item:not(.premium):hover {
+            border-color: var(--white);
+            transform: translateY(-3px);
+            box-shadow: 0 10px 30px rgba(255, 255, 255, 0.1);
+        }
+
+        /* Service Content */
+        .service-content {
+            display: flex;
+            align-items: center;
+            gap: 15px;
+            flex: 1;
+        }
+
+        .service-item-icon {
+            font-size: 1.3rem;
+            color: var(--lime);
+            transition: all 0.3s;
+            min-width: 25px;
+        }
+
+        .service-item.premium .service-item-icon {
+            color: var(--lime);
+            filter: drop-shadow(0 0 8px rgba(195, 227, 33, 0.5));
+        }
+
+        .service-item:hover .service-item-icon {
+            transform: scale(1.2) rotate(5deg);
+        }
+
+        .service-name {
+            color: var(--white);
+            font-size: 1.1rem;
+            font-weight: 600;
+            letter-spacing: 0.3px;
+        }
+
+        /* Service Price */
+        .service-item-price {
+            color: var(--white);
+            font-size: 1.3rem;
+            font-weight: 900;
+            font-family: 'Montserrat', sans-serif;
+            letter-spacing: 0.5px;
+            white-space: nowrap;
+            margin-left: 20px;
+        }
+
+        .service-item.premium .service-item-price {
+            color: var(--lime);
+            font-style: italic;
+        }
+
+        /* Contact Info */
+        .services-contact {
+            text-align: center;
+            padding-top: 40px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            animation: fadeInUp 1s ease 0.8s backwards;
+        }
+
+        .contact-phones {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            margin-bottom: 20px;
+            font-size: 1.2rem;
+            color: var(--white);
+        }
+
+        .contact-phones i {
+            color: var(--lime);
+            font-size: 1.1rem;
+            animation: ring 2s ease infinite;
+        }
+
+        @keyframes ring {
+            0%, 100% { transform: rotate(0deg); }
+            10%, 30% { transform: rotate(-15deg); }
+            20%, 40% { transform: rotate(15deg); }
+        }
+
+        .contact-phones a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 700;
+            transition: all 0.3s;
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        .contact-phones a:hover {
+            color: var(--lime);
+            text-shadow: 0 0 10px rgba(195, 227, 33, 0.5);
+        }
+
+        .phone-separator {
+            color: var(--lime);
+            font-weight: 700;
+        }
+
+        .contact-website {
+            color: rgba(255, 255, 255, 0.8);
+            font-size: 1rem;
+            font-weight: 600;
+            letter-spacing: 0.5px;
+        }
+
+        /* Animations */
+        @keyframes fadeInDown {
+            from {
+                opacity: 0;
+                transform: translateY(-30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        @keyframes fadeInUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        /* Responsive Design for Premium Services */
+        @media (max-width: 768px) {
+            .services-premium {
+                padding: 60px 25px;
+            }
+
+            .premium-logo {
+                width: 150px;
+            }
+
+            .services-logo {
+                margin-bottom: 40px;
+            }
+
+            .service-item {
+                padding: 15px 25px;
+                border-radius: 40px;
+            }
+
+            .service-name {
+                font-size: 1rem;
+            }
+
+            .service-item-price {
+                font-size: 1.1rem;
+            }
+
+            .service-item-icon {
+                font-size: 1.1rem;
+            }
+
+            .contact-phones {
+                font-size: 1rem;
+                flex-wrap: wrap;
+            }
+
+            .contact-website {
+                font-size: 0.9rem;
+            }
+        }
+
+        @media (max-width: 480px) {
+            .services-list {
+                gap: 15px;
+            }
+
+            .service-item {
+                padding: 12px 20px;
+            }
+
+            .service-content {
+                gap: 10px;
+            }
+
+            .service-name {
+                font-size: 0.9rem;
+            }
+
+            .service-item-price {
+                font-size: 1rem;
+                margin-left: 10px;
+            }
+        }
+
         /* FEATURES SECTION */
         .features-grid {
             display: grid;
@@ -1071,116 +1398,92 @@
         </div>
     </section>
 
-    <!-- SERVICES SECTION -->
-    <section class="section" id="services">
-        <div class="section-header">
-            <div class="section-label" data-translate="servicesLabel">OUR SERVICES</div>
-            <h2 class="section-title" data-translate="servicesTitle">Premium Car Care Packages</h2>
-            <p class="section-description" data-translate="servicesDesc">
-                Choose from our range of professional detailing services designed to keep your vehicle in pristine condition.
-            </p>
-        </div>
+    <!-- SERVICES SECTION - REDESIGNED -->
+    <section class="section services-premium" id="services">
+        <div class="services-premium-container">
+            <!-- Logo -->
+            <div class="services-logo">
+                <img src="mondi_logo_1500_smooth.png" alt="Mondi Car Wash" class="premium-logo">
+            </div>
 
-        <div class="services-carousel-container">
-            <button class="carousel-btn carousel-prev" aria-label="Previous service">
-                <i class="fas fa-chevron-left"></i>
-            </button>
-
-            <div class="services-carousel">
-                <div class="services-track">
-                    <!-- Service 1 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-spray-can"></i>
-                        </div>
-                        <h3 class="service-title" data-translate="service1Title">Πλύσιμο Μέσα-Έξω</h3>
-                        <p class="service-description" data-translate="service1Desc">
-                            Πλήρης καθαρισμός εσωτερικού και εξωτερικού χώρου του οχήματος.
-                        </p>
-                        <div class="service-price">€15</div>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature1">Εξωτερικό πλύσιμο</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature2">Εσωτερικός καθαρισμός</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature3">Καθαρισμός τζαμιών</span></li>
-                        </ul>
+            <!-- Services List -->
+            <div class="services-list">
+                <!-- Service 1 -->
+                <div class="service-item" data-service="standard">
+                    <div class="service-content">
+                        <i class="fas fa-spray-can service-item-icon"></i>
+                        <span class="service-name" data-translate="service1Title">Πλύσιμο Μέσα & Έξω</span>
                     </div>
+                    <span class="service-item-price">15€</span>
+                </div>
 
-                    <!-- Service 2 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-lightbulb"></i>
-                        </div>
-                        <h3 class="service-title" data-translate="service2Title">Γιάλισμα Φαναριών</h3>
-                        <p class="service-description" data-translate="service2Desc">
-                            Επαγγελματικό γιάλισμα και αποκατάσταση φαναριών για καλύτερη ορατότητα.
-                        </p>
-                        <div class="service-price">€40</div>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature4">Αφαίρεση θαμπάδας</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature5">Γυάλισμα φαναριών</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature6">UV προστασία</span></li>
-                        </ul>
+                <!-- Service 2 - Premium -->
+                <div class="service-item premium" data-service="premium">
+                    <div class="service-content">
+                        <i class="fas fa-star service-item-icon"></i>
+                        <span class="service-name" data-translate="service4Title">Πλύσιμο Μέσα & Έξω Premium</span>
                     </div>
+                    <span class="service-item-price">30€</span>
+                </div>
 
-                    <!-- Service 3 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-leaf"></i>
-                        </div>
-                        <h3 class="service-title" data-translate="service3Title">Βιολογικό</h3>
-                        <p class="service-description" data-translate="service3Desc">
-                            Βιολογικός καθαρισμός με φιλικά προς το περιβάλλον προϊόντα.
-                        </p>
-                        <div class="service-price">€85</div>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature7">Οικολογικά προϊόντα</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature8">Πλήρης καθαρισμός</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature9">Προστασία βαφής</span></li>
-                        </ul>
+                <!-- Service 3 -->
+                <div class="service-item" data-service="standard">
+                    <div class="service-content">
+                        <i class="fas fa-lightbulb service-item-icon"></i>
+                        <span class="service-name" data-translate="service2Title">Γυάλισμα φανάρια</span>
                     </div>
+                    <span class="service-item-price">30€</span>
+                </div>
 
-                    <!-- Service 4 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-star"></i>
-                        </div>
-                        <h3 class="service-title" data-translate="service4Title">Πλύσιμο Premium</h3>
-                        <p class="service-description" data-translate="service4Desc">
-                            Premium πλύσιμο μέσα-έξω με premium προϊόντα και περιποίηση.
-                        </p>
-                        <div class="service-price">€40</div>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature10">Premium προϊόντα</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature11">Κερί προστασίας</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature12">Περιποίηση ταμπλό</span></li>
-                        </ul>
+                <!-- Service 4 -->
+                <div class="service-item" data-service="standard">
+                    <div class="service-content">
+                        <i class="fas fa-leaf service-item-icon"></i>
+                        <span class="service-name" data-translate="service3Title">Βιολογικό</span>
                     </div>
+                    <span class="service-item-price">85€</span>
+                </div>
 
-                    <!-- Service 5 -->
-                    <div class="service-card">
-                        <div class="service-icon">
-                            <i class="fas fa-gem"></i>
-                        </div>
-                        <h3 class="service-title" data-translate="service5Title">Βιολογικό Premium</h3>
-                        <p class="service-description" data-translate="service5Desc">
-                            Η απόλυτη εμπειρία βιολογικού καθαρισμού με premium υλικά.
-                        </p>
-                        <div class="service-price">€130</div>
-                        <ul class="service-features">
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature13">Premium βιολογικά προϊόντα</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature14">Κεραμική προστασία</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature15">Πλήρης αποκατάσταση</span></li>
-                            <li><i class="fas fa-check-circle"></i> <span data-translate="feature16">Διάρκεια 3-4 ώρες</span></li>
-                        </ul>
+                <!-- Service 5 - Premium -->
+                <div class="service-item premium" data-service="premium">
+                    <div class="service-content">
+                        <i class="fas fa-gem service-item-icon"></i>
+                        <span class="service-name" data-translate="service5Title">Βιολογικό Premium</span>
                     </div>
+                    <span class="service-item-price">130€</span>
+                </div>
+
+                <!-- Service 6 - Stadium Wash -->
+                <div class="service-item" data-service="stadium">
+                    <div class="service-content">
+                        <i class="fas fa-building service-item-icon"></i>
+                        <span class="service-name" data-translate="service6Title">Γυάλισμα 1 Σταδίου</span>
+                    </div>
+                    <span class="service-item-price">200€</span>
+                </div>
+
+                <!-- Service 7 - Stadium Premium -->
+                <div class="service-item" data-service="stadium">
+                    <div class="service-content">
+                        <i class="fas fa-trophy service-item-icon"></i>
+                        <span class="service-name" data-translate="service7Title">Γυάλισμα 3 Σταδίων</span>
+                    </div>
+                    <span class="service-item-price">350€</span>
                 </div>
             </div>
 
-            <button class="carousel-btn carousel-next" aria-label="Next service">
-                <i class="fas fa-chevron-right"></i>
-            </button>
-
-            <div class="carousel-dots"></div>
+            <!-- Contact Info -->
+            <div class="services-contact">
+                <div class="contact-phones">
+                    <i class="fas fa-phone-alt"></i>
+                    <a href="tel:+306974628335">6974628335</a>
+                    <span class="phone-separator">-</span>
+                    <a href="tel:+306984578266">6984578266</a>
+                </div>
+                <div class="contact-website">
+                    www.mondicarwash.com
+                </div>
+            </div>
         </div>
     </section>
 
@@ -1449,6 +1752,8 @@
                 service4Desc: "Premium inside-outside wash with premium products and care.",
                 service5Title: "Biological Premium",
                 service5Desc: "The ultimate biological cleaning experience with premium materials.",
+                service6Title: "1 Stage Polishing",
+                service7Title: "3 Stage Polishing",
                 feature1: "Exterior wash",
                 feature2: "Interior cleaning",
                 feature3: "Window cleaning",
@@ -1534,6 +1839,8 @@
                 service4Desc: "Premium πλύσιμο μέσα-έξω με premium προϊόντα και περιποίηση.",
                 service5Title: "Βιολογικό Premium",
                 service5Desc: "Η απόλυτη εμπειρία βιολογικού καθαρισμού με premium υλικά.",
+                service6Title: "Γυάλισμα 1 Σταδίου",
+                service7Title: "Γυάλισμα 3 Σταδίων",
                 feature1: "Εξωτερικό πλύσιμο",
                 feature2: "Εσωτερικός καθαρισμός",
                 feature3: "Καθαρισμός τζαμιών",
